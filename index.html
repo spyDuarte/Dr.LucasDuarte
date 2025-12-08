@@ -4,16 +4,57 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="Dr. Lucas Duarte - Médico em Balneário Camboriú/SC. Atendimento presencial e telemedicina para todo o Brasil. Cuidado humanizado e promoção da saúde com excelência.">
-    <meta name="keywords" content="médico Balneário Camboriú, telemedicina, consulta online, Dr. Lucas Duarte, médico SC, saúde, consulta médica, medicina, bem-estar">
+    <meta name="keywords" content="médico Balneário Camboriú, telemedicina, consulta online, Dr. Lucas Duarte, médico SC, saúde, consulta médica, medicina, bem-estar, clínico geral">
     <meta name="author" content="Dr. Lucas Duarte">
+    <meta name="robots" content="index, follow">
+    <meta name="theme-color" content="#2563eb">
+    <link rel="canonical" href="https://drlucasduarte.com.br">
 
     <!-- Open Graph / Social Media -->
     <meta property="og:type" content="website">
+    <meta property="og:url" content="https://drlucasduarte.com.br">
     <meta property="og:title" content="Dr. Lucas Duarte | Médico - Balneário Camboriú e Telemedicina">
     <meta property="og:description" content="Médico em Balneário Camboriú/SC. Atendimento presencial e telemedicina para todo o Brasil.">
     <meta property="og:image" content="assets/images/og-image.jpg">
+    <meta property="og:locale" content="pt_BR">
+
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Dr. Lucas Duarte | Médico">
+    <meta name="twitter:description" content="Médico em Balneário Camboriú com telemedicina para todo o Brasil.">
 
     <title>Dr. Lucas Duarte | Médico em Balneário Camboriú - Telemedicina Brasil</title>
+
+    <!-- Schema.org Markup for Medical Professional -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "Physician",
+        "name": "Dr. Lucas Duarte",
+        "description": "Médico dedicado ao cuidado humanizado e promoção da saúde",
+        "address": {
+            "@type": "PostalAddress",
+            "addressLocality": "Balneário Camboriú",
+            "addressRegion": "SC",
+            "addressCountry": "BR"
+        },
+        "medicalSpecialty": "General Practice",
+        "availableService": [
+            {
+                "@type": "MedicalProcedure",
+                "name": "Consulta Presencial"
+            },
+            {
+                "@type": "MedicalProcedure",
+                "name": "Telemedicina"
+            }
+        ],
+        "areaServed": {
+            "@type": "Country",
+            "name": "Brasil"
+        }
+    }
+    </script>
 
     <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -27,10 +68,13 @@
     <link rel="stylesheet" href="assets/css/style.css">
 </head>
 <body>
+    <!-- Skip to content for accessibility -->
+    <a href="#main-content" class="skip-link">Pular para o conteúdo principal</a>
+
     <!-- Header / Navigation -->
-    <header class="header" id="header">
-        <nav class="nav container">
-            <a href="#" class="nav__logo">
+    <header class="header" id="header" role="banner">
+        <nav class="nav container" role="navigation" aria-label="Menu principal">
+            <a href="#" class="nav__logo" aria-label="Dr. Lucas Duarte - Página inicial">
                 <span class="logo-dr">Dr.</span> Lucas Duarte
             </a>
 
@@ -43,84 +87,104 @@
                         <a href="#sobre" class="nav__link">Sobre</a>
                     </li>
                     <li class="nav__item">
-                        <a href="#especialidades" class="nav__link">Especialidades</a>
+                        <a href="#especialidades" class="nav__link">Serviços</a>
                     </li>
                     <li class="nav__item">
                         <a href="#formacao" class="nav__link">Formação</a>
-                    </li>
-                    <li class="nav__item">
-                        <a href="#conteudo" class="nav__link">Conteúdo</a>
                     </li>
                     <li class="nav__item">
                         <a href="#contato" class="nav__link">Contato</a>
                     </li>
                 </ul>
 
-                <div class="nav__close" id="nav-close">
-                    <i class="fas fa-times"></i>
-                </div>
+                <!-- CTA no menu mobile -->
+                <a href="#contato" class="nav__cta btn btn--primary btn--sm">
+                    <i class="fas fa-calendar-check" aria-hidden="true"></i> Agendar
+                </a>
+
+                <button class="nav__close" id="nav-close" aria-label="Fechar menu">
+                    <i class="fas fa-times" aria-hidden="true"></i>
+                </button>
             </div>
 
-            <div class="nav__toggle" id="nav-toggle">
-                <i class="fas fa-bars"></i>
-            </div>
+            <!-- CTA Header Desktop -->
+            <a href="#contato" class="nav__cta-desktop btn btn--primary btn--sm">
+                <i class="fas fa-calendar-check" aria-hidden="true"></i> Agendar Consulta
+            </a>
+
+            <button class="nav__toggle" id="nav-toggle" aria-label="Abrir menu" aria-expanded="false">
+                <i class="fas fa-bars" aria-hidden="true"></i>
+            </button>
         </nav>
     </header>
 
     <!-- Main Content -->
-    <main class="main">
+    <main class="main" id="main-content">
         <!-- Hero Section -->
-        <section class="hero section" id="home">
+        <section class="hero section" id="home" aria-labelledby="hero-title">
             <div class="hero__container container">
                 <div class="hero__content">
-                    <span class="hero__subtitle">Bem-vindo ao meu consultório virtual</span>
-                    <h1 class="hero__title">
+                    <span class="hero__subtitle">
+                        <i class="fas fa-map-marker-alt" aria-hidden="true"></i> Balneário Camboriú - SC
+                    </span>
+                    <h1 class="hero__title" id="hero-title">
                         Olá, sou o <span class="highlight">Dr. Lucas Duarte</span>
                     </h1>
                     <p class="hero__description">
-                        Médico dedicado ao <strong>cuidado humanizado</strong> e à promoção da saúde.
-                        Atendimento <strong>presencial em Balneário Camboriú</strong> e <strong>telemedicina</strong>
-                        para todo o Brasil. Cada paciente é único e merece atenção individualizada.
+                        Sua saúde merece <strong>atenção de verdade</strong>. Ofereço atendimento médico
+                        <strong>humanizado e individualizado</strong>, seja no consultório em
+                        <strong>Balneário Camboriú</strong> ou por <strong>telemedicina</strong> para todo o Brasil.
                     </p>
+
+                    <!-- Trust Badges -->
+                    <div class="hero__trust">
+                        <div class="trust-badge">
+                            <i class="fas fa-user-md" aria-hidden="true"></i>
+                            <span>CRM Ativo</span>
+                        </div>
+                        <div class="trust-badge">
+                            <i class="fas fa-shield-alt" aria-hidden="true"></i>
+                            <span>CFM Regulamentado</span>
+                        </div>
+                        <div class="trust-badge">
+                            <i class="fas fa-video" aria-hidden="true"></i>
+                            <span>Telemedicina Legal</span>
+                        </div>
+                    </div>
+
                     <div class="hero__buttons">
-                        <a href="#contato" class="btn btn--primary">
-                            <i class="fas fa-calendar-check"></i> Agende sua Consulta
+                        <a href="#contato" class="btn btn--primary btn--lg">
+                            <i class="fas fa-calendar-check" aria-hidden="true"></i> Agendar Minha Consulta
                         </a>
-                        <a href="#sobre" class="btn btn--outline">
-                            <i class="fas fa-user-md"></i> Conheça-me
+                        <a href="https://wa.me/5500000000000" class="btn btn--whatsapp" target="_blank" rel="noopener">
+                            <i class="fab fa-whatsapp" aria-hidden="true"></i> WhatsApp Direto
                         </a>
                     </div>
-                    <div class="hero__stats">
-                        <div class="stat">
-                            <span class="stat__number">100%</span>
-                            <span class="stat__text">Dedicação</span>
-                        </div>
-                        <div class="stat">
-                            <span class="stat__number">24h</span>
-                            <span class="stat__text">Disponível</span>
-                        </div>
-                        <div class="stat">
-                            <span class="stat__number">+500</span>
-                            <span class="stat__text">Pacientes</span>
-                        </div>
-                    </div>
+
+                    <p class="hero__availability">
+                        <i class="fas fa-clock" aria-hidden="true"></i>
+                        Horário flexível · Resposta em até 24h
+                    </p>
                 </div>
                 <div class="hero__image">
                     <div class="hero__image-wrapper">
                         <div class="hero__image-placeholder">
-                            <i class="fas fa-user-md"></i>
+                            <i class="fas fa-user-md" aria-hidden="true"></i>
                             <span>Foto do Dr. Lucas</span>
                         </div>
-                        <div class="hero__badge">
-                            <i class="fas fa-certificate"></i>
-                            <span>CRM Ativo</span>
+                        <div class="hero__badge hero__badge--location">
+                            <i class="fas fa-map-marker-alt" aria-hidden="true"></i>
+                            <div>
+                                <strong>Balneário Camboriú</strong>
+                                <span>+ Telemedicina Brasil</span>
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
             <div class="hero__scroll">
-                <a href="#sobre" class="scroll-down">
-                    <i class="fas fa-chevron-down"></i>
+                <a href="#sobre" class="scroll-down" aria-label="Rolar para próxima seção">
+                    <i class="fas fa-chevron-down" aria-hidden="true"></i>
                 </a>
             </div>
         </section>
@@ -337,106 +401,70 @@
             </div>
         </section>
 
-        <!-- Content Section -->
-        <section class="content section" id="conteudo">
+        <!-- Why Choose Section -->
+        <section class="why-choose section" id="diferenciais">
             <div class="container">
                 <div class="section__header">
-                    <span class="section__subtitle">Informação de qualidade</span>
-                    <h2 class="section__title">Conteúdo em Saúde</h2>
+                    <span class="section__subtitle">Por que me escolher</span>
+                    <h2 class="section__title">Meu Compromisso com Você</h2>
                     <p class="section__description">
-                        Compartilho conhecimento para ajudar você a cuidar melhor da sua saúde
+                        Cada consulta é uma oportunidade de fazer a diferença na sua saúde
                     </p>
                 </div>
 
-                <div class="content__grid">
-                    <article class="content__card">
-                        <div class="content__image">
-                            <div class="content__image-placeholder">
-                                <i class="fas fa-apple-alt"></i>
-                            </div>
-                            <span class="content__category">Prevenção</span>
+                <div class="why-choose__grid">
+                    <div class="why-choose__card">
+                        <div class="why-choose__number">01</div>
+                        <div class="why-choose__content">
+                            <h3>Consulta sem Pressa</h3>
+                            <p>Dedico tempo para ouvir você. Nada de consultas de 10 minutos —
+                               aqui você é atendido com calma e atenção.</p>
                         </div>
-                        <div class="content__info">
-                            <span class="content__date">
-                                <i class="far fa-calendar"></i> Em breve
-                            </span>
-                            <h3 class="content__title">
-                                A importância da alimentação saudável
-                            </h3>
-                            <p class="content__excerpt">
-                                Descubra como pequenas mudanças na alimentação podem
-                                transformar sua saúde e qualidade de vida.
-                            </p>
-                            <a href="#" class="content__link">
-                                Ler mais <i class="fas fa-arrow-right"></i>
-                            </a>
-                        </div>
-                    </article>
+                    </div>
 
-                    <article class="content__card">
-                        <div class="content__image">
-                            <div class="content__image-placeholder">
-                                <i class="fas fa-running"></i>
-                            </div>
-                            <span class="content__category">Bem-estar</span>
+                    <div class="why-choose__card">
+                        <div class="why-choose__number">02</div>
+                        <div class="why-choose__content">
+                            <h3>Linguagem Clara</h3>
+                            <p>Explico tudo de forma simples, sem jargões médicos complicados.
+                               Você sai da consulta entendendo sua saúde.</p>
                         </div>
-                        <div class="content__info">
-                            <span class="content__date">
-                                <i class="far fa-calendar"></i> Em breve
-                            </span>
-                            <h3 class="content__title">
-                                Exercícios físicos e saúde mental
-                            </h3>
-                            <p class="content__excerpt">
-                                A conexão entre atividade física e bem-estar emocional
-                                que você precisa conhecer.
-                            </p>
-                            <a href="#" class="content__link">
-                                Ler mais <i class="fas fa-arrow-right"></i>
-                            </a>
-                        </div>
-                    </article>
+                    </div>
 
-                    <article class="content__card">
-                        <div class="content__image">
-                            <div class="content__image-placeholder">
-                                <i class="fas fa-bed"></i>
-                            </div>
-                            <span class="content__category">Dicas</span>
+                    <div class="why-choose__card">
+                        <div class="why-choose__number">03</div>
+                        <div class="why-choose__content">
+                            <h3>Acompanhamento Real</h3>
+                            <p>Não abandono meus pacientes. Estou disponível para tirar dúvidas
+                               e acompanhar sua evolução.</p>
                         </div>
-                        <div class="content__info">
-                            <span class="content__date">
-                                <i class="far fa-calendar"></i> Em breve
-                            </span>
-                            <h3 class="content__title">
-                                Sono de qualidade: guia completo
-                            </h3>
-                            <p class="content__excerpt">
-                                Tudo o que você precisa saber para melhorar a qualidade
-                                do seu sono e acordar renovado.
-                            </p>
-                            <a href="#" class="content__link">
-                                Ler mais <i class="fas fa-arrow-right"></i>
-                            </a>
+                    </div>
+
+                    <div class="why-choose__card">
+                        <div class="why-choose__number">04</div>
+                        <div class="why-choose__content">
+                            <h3>Medicina Baseada em Evidências</h3>
+                            <p>Todas as condutas são respaldadas pela ciência mais atual.
+                               Nada de tratamentos sem comprovação.</p>
                         </div>
-                    </article>
+                    </div>
                 </div>
 
-                <div class="content__social">
-                    <p>Siga-me nas redes sociais para mais conteúdo:</p>
-                    <div class="social__links">
-                        <a href="#" class="social__link instagram" aria-label="Instagram">
-                            <i class="fab fa-instagram"></i>
-                        </a>
-                        <a href="#" class="social__link youtube" aria-label="YouTube">
-                            <i class="fab fa-youtube"></i>
-                        </a>
-                        <a href="#" class="social__link linkedin" aria-label="LinkedIn">
-                            <i class="fab fa-linkedin-in"></i>
-                        </a>
-                        <a href="#" class="social__link tiktok" aria-label="TikTok">
-                            <i class="fab fa-tiktok"></i>
-                        </a>
+                <!-- CTA Section -->
+                <div class="why-choose__cta">
+                    <div class="cta-box">
+                        <div class="cta-box__content">
+                            <h3>Pronto para cuidar da sua saúde?</h3>
+                            <p>Agende sua consulta agora mesmo — presencial ou por telemedicina.</p>
+                        </div>
+                        <div class="cta-box__actions">
+                            <a href="#contato" class="btn btn--primary btn--lg">
+                                <i class="fas fa-calendar-check" aria-hidden="true"></i> Agendar Consulta
+                            </a>
+                            <a href="https://wa.me/5500000000000" class="btn btn--whatsapp" target="_blank" rel="noopener">
+                                <i class="fab fa-whatsapp" aria-hidden="true"></i> WhatsApp
+                            </a>
+                        </div>
                     </div>
                 </div>
             </div>

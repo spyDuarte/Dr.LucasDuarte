@@ -224,6 +224,46 @@ select {
     width: 100%;
 }
 
+.btn--sm {
+    padding: 0.625rem 1.25rem;
+    font-size: 0.875rem;
+}
+
+.btn--lg {
+    padding: 1rem 2rem;
+    font-size: 1.0625rem;
+}
+
+.btn--whatsapp {
+    background: #25d366;
+    color: var(--white);
+    box-shadow: var(--shadow-md);
+}
+
+.btn--whatsapp:hover {
+    background: #128c7e;
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-lg);
+}
+
+/* Skip Link for Accessibility */
+.skip-link {
+    position: absolute;
+    top: -100px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: var(--primary-color);
+    color: var(--white);
+    padding: var(--spacing-sm) var(--spacing-md);
+    border-radius: var(--radius);
+    z-index: 9999;
+    transition: var(--transition);
+}
+
+.skip-link:focus {
+    top: var(--spacing-md);
+}
+
 /* ==================== HEADER ==================== */
 .header {
     position: fixed;
@@ -299,6 +339,20 @@ select {
     font-size: 1.5rem;
     color: var(--text-primary);
     cursor: pointer;
+    background: none;
+    border: none;
+}
+
+/* Header CTA */
+.nav__cta-desktop {
+    display: inline-flex;
+}
+
+.nav__cta {
+    display: none;
+    margin-top: var(--spacing-lg);
+    width: 100%;
+    justify-content: center;
 }
 
 /* ==================== HERO SECTION ==================== */
@@ -421,32 +475,47 @@ select {
     max-width: 500px;
 }
 
+.hero__trust {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--spacing-md);
+    margin-bottom: var(--spacing-xl);
+}
+
+.trust-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: var(--spacing-xs);
+    padding: var(--spacing-xs) var(--spacing-md);
+    background: rgba(42, 157, 143, 0.1);
+    border: 1px solid rgba(42, 157, 143, 0.2);
+    border-radius: var(--radius-full);
+    font-size: 0.8125rem;
+    font-weight: 500;
+    color: var(--medical-green);
+}
+
+.trust-badge i {
+    font-size: 0.75rem;
+}
+
 .hero__buttons {
     display: flex;
+    flex-wrap: wrap;
     gap: var(--spacing-md);
-    margin-bottom: var(--spacing-2xl);
+    margin-bottom: var(--spacing-lg);
 }
 
-.hero__stats {
+.hero__availability {
     display: flex;
-    gap: var(--spacing-2xl);
-}
-
-.stat {
-    text-align: center;
-}
-
-.stat__number {
-    display: block;
-    font-family: var(--font-display);
-    font-size: 2rem;
-    font-weight: 700;
-    color: var(--primary-color);
-}
-
-.stat__text {
+    align-items: center;
+    gap: var(--spacing-sm);
     font-size: 0.875rem;
     color: var(--text-muted);
+}
+
+.hero__availability i {
+    color: var(--medical-green);
 }
 
 .hero__image {
@@ -498,13 +567,34 @@ select {
 }
 
 .hero__badge i {
-    color: var(--medical-green);
+    color: var(--primary-color);
     font-size: 1.5rem;
 }
 
 .hero__badge span {
     font-weight: 600;
     color: var(--text-primary);
+}
+
+.hero__badge--location {
+    bottom: 40px;
+    left: -40px;
+}
+
+.hero__badge--location div {
+    display: flex;
+    flex-direction: column;
+}
+
+.hero__badge--location strong {
+    font-size: 0.9375rem;
+    color: var(--text-primary);
+}
+
+.hero__badge--location span {
+    font-size: 0.75rem;
+    font-weight: 400;
+    color: var(--text-muted);
 }
 
 .hero__scroll {
@@ -1045,6 +1135,129 @@ select {
 .social__link:hover {
     transform: translateY(-3px) scale(1.05);
     box-shadow: var(--shadow-lg);
+}
+
+/* ==================== WHY CHOOSE SECTION ==================== */
+.why-choose {
+    background:
+        linear-gradient(180deg, #ffffff 0%, #f8fafc 100%);
+    position: relative;
+    overflow: hidden;
+}
+
+.why-choose::before {
+    content: '';
+    position: absolute;
+    top: 20%;
+    right: -10%;
+    width: 400px;
+    height: 400px;
+    background: linear-gradient(135deg, rgba(37, 99, 235, 0.04) 0%, rgba(6, 182, 212, 0.04) 100%);
+    border-radius: 50%;
+    z-index: 0;
+}
+
+.why-choose__grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: var(--spacing-xl);
+    margin-bottom: var(--spacing-3xl);
+}
+
+.why-choose__card {
+    display: flex;
+    gap: var(--spacing-lg);
+    padding: var(--spacing-xl);
+    background: var(--white);
+    border-radius: var(--radius-lg);
+    box-shadow: var(--shadow);
+    border: 1px solid var(--gray-100);
+    transition: var(--transition);
+}
+
+.why-choose__card:hover {
+    transform: translateY(-3px);
+    box-shadow: var(--shadow-lg);
+    border-color: var(--primary-color);
+}
+
+.why-choose__number {
+    font-family: var(--font-display);
+    font-size: 2.5rem;
+    font-weight: 700;
+    color: var(--primary-color);
+    opacity: 0.3;
+    line-height: 1;
+    flex-shrink: 0;
+}
+
+.why-choose__card:hover .why-choose__number {
+    opacity: 1;
+}
+
+.why-choose__content h3 {
+    font-size: 1.125rem;
+    font-weight: 600;
+    color: var(--text-primary);
+    margin-bottom: var(--spacing-sm);
+}
+
+.why-choose__content p {
+    font-size: 0.9375rem;
+    color: var(--text-muted);
+    line-height: 1.6;
+}
+
+.why-choose__cta {
+    text-align: center;
+}
+
+.cta-box {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: var(--spacing-xl);
+    padding: var(--spacing-2xl);
+    background: linear-gradient(135deg, var(--primary-color) 0%, var(--secondary-color) 100%);
+    border-radius: var(--radius-xl);
+    color: var(--white);
+}
+
+.cta-box__content h3 {
+    font-family: var(--font-display);
+    font-size: 1.75rem;
+    font-weight: 600;
+    margin-bottom: var(--spacing-sm);
+}
+
+.cta-box__content p {
+    font-size: 1rem;
+    opacity: 0.9;
+}
+
+.cta-box__actions {
+    display: flex;
+    gap: var(--spacing-md);
+    flex-shrink: 0;
+}
+
+.cta-box .btn--primary {
+    background: var(--white);
+    color: var(--primary-color);
+}
+
+.cta-box .btn--primary:hover {
+    background: var(--gray-100);
+}
+
+.cta-box .btn--whatsapp {
+    background: rgba(255, 255, 255, 0.2);
+    border: 2px solid var(--white);
+}
+
+.cta-box .btn--whatsapp:hover {
+    background: var(--white);
+    color: #25d366;
 }
 
 /* ==================== CONTACT SECTION ==================== */
@@ -1642,6 +1855,14 @@ select {
         right: 1.5rem;
     }
 
+    .nav__cta-desktop {
+        display: none;
+    }
+
+    .nav__cta {
+        display: flex;
+    }
+
     .hero {
         min-height: auto;
         padding: calc(var(--header-height) + 2rem) 0 var(--spacing-2xl);
@@ -1655,12 +1876,16 @@ select {
         flex-direction: column;
     }
 
-    .hero__stats {
-        flex-wrap: wrap;
-        gap: var(--spacing-xl);
+    .hero__trust {
+        justify-content: center;
     }
 
-    .hero__badge {
+    .hero__availability {
+        justify-content: center;
+    }
+
+    .hero__badge,
+    .hero__badge--location {
         left: 0;
         bottom: -10px;
     }
@@ -1689,6 +1914,29 @@ select {
     .location-highlight {
         flex-direction: column;
         text-align: center;
+    }
+
+    .why-choose__grid {
+        grid-template-columns: 1fr;
+    }
+
+    .why-choose__card {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .cta-box {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .cta-box__actions {
+        flex-direction: column;
+        width: 100%;
+    }
+
+    .cta-box__actions .btn {
+        width: 100%;
     }
 
     .education__timeline::before {
