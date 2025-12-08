@@ -321,7 +321,7 @@ document.addEventListener('DOMContentLoaded', function () {
     }
 
     // Initialize scroll animations
-    animateOnScroll();
+    // animateOnScroll(); // Disabled per user request (elements stay visible)
 
     // ==================== STATS COUNTER ====================
     function animateStats() {

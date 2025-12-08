@@ -1834,7 +1834,7 @@ select {
 @keyframes fadeInUp {
     from {
         opacity: 0;
-        transform: translateY(30px);
+        transform: translateY(20px);
     }
 
     to {
@@ -1846,7 +1846,7 @@ select {
 @keyframes fadeInLeft {
     from {
         opacity: 0;
-        transform: translateX(-30px);
+        transform: translateX(-20px);
     }
 
     to {
@@ -1858,7 +1858,7 @@ select {
 @keyframes fadeInRight {
     from {
         opacity: 0;
-        transform: translateX(30px);
+        transform: translateX(20px);
     }
 
     to {
@@ -1868,15 +1868,15 @@ select {
 }
 
 .animate-fade-up {
-    animation: fadeInUp 0.3s ease forwards;
+    animation: fadeInUp 0.2s ease forwards;
 }
 
 .animate-fade-left {
-    animation: fadeInLeft 0.3s ease forwards;
+    animation: fadeInLeft 0.2s ease forwards;
 }
 
 .animate-fade-right {
-    animation: fadeInRight 0.3s ease forwards;
+    animation: fadeInRight 0.2s ease forwards;
 }
 
 /* Delay classes for staggered animations */
