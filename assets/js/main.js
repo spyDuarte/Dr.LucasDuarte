@@ -297,14 +297,14 @@ document.addEventListener('DOMContentLoaded', function () {
 
     // ==================== SCROLL ANIMATIONS ====================
     function animateOnScroll() {
-        const animatedElements = document.querySelectorAll('.specialty__card, .timeline__item, .content__card, .contact__card, .value');
+        const animatedElements = document.querySelectorAll('.specialty__card, .timeline__item, .content__card, .contact__card, .value, .why-choose__card, .attendance-mode, .trust-badge, .cta-box');
 
         const observer = new IntersectionObserver(function (entries) {
             entries.forEach(function (entry) {
                 if (entry.isIntersecting) {
+                    entry.target.classList.add('animated');
                     entry.target.style.opacity = '1';
                     entry.target.style.transform = 'translateY(0)';
-                    observer.unobserve(entry.target);
                 }
             });
         }, {
@@ -321,7 +321,28 @@ document.addEventListener('DOMContentLoaded', function () {
     }
 
     // Initialize scroll animations
-    // animateOnScroll(); // Disabled per user request (elements stay visible)
+    animateOnScroll();
+
+    // ==================== CONTINUOUS ANIMATIONS ====================
+    // Add floating animation to hero elements
+    const heroImage = document.querySelector('.hero__image-wrapper');
+    if (heroImage) {
+        heroImage.classList.add('float-animation');
+    }
+
+    // Add pulse animation to CTA buttons
+    const ctaButtons = document.querySelectorAll('.btn--primary, .btn--whatsapp');
+    ctaButtons.forEach(function(btn) {
+        btn.classList.add('cta-pulse');
+    });
+
+    // Add shine effect to trust badges
+    const trustBadges = document.querySelectorAll('.trust-badge');
+    trustBadges.forEach(function(badge, index) {
+        setTimeout(function() {
+            badge.classList.add('shine-effect');
+        }, index * 200);
+    });
 
     // ==================== STATS COUNTER ====================
     function animateStats() {
