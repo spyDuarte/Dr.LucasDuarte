@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -14,7 +15,8 @@
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://drlucasduarte.com.br">
     <meta property="og:title" content="Dr. Lucas Duarte | Médico - Balneário Camboriú e Telemedicina">
-    <meta property="og:description" content="Médico em Balneário Camboriú/SC. Atendimento presencial e telemedicina para todo o Brasil.">
+    <meta property="og:description"
+        content="Médico em Balneário Camboriú/SC. Atendimento presencial e telemedicina para todo o Brasil.">
     <meta property="og:image" content="assets/images/og-image.jpg">
     <meta property="og:locale" content="pt_BR">
 
@@ -59,14 +61,45 @@
     <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Inter:wght@300;400;500;600;700&display=swap"
+        rel="stylesheet">
 
     <!-- Font Awesome Icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
 
     <!-- Custom CSS -->
     <link rel="stylesheet" href="assets/css/style.css">
+
+    <!-- Google Analytics (Placeholder) -->
+    <!-- <script async src="https://www.googletagmanager.com/gtag/js?id=UA-XXXXX-Y"></script> -->
+    <script>
+        // window.dataLayer = window.dataLayer || [];
+        // function gtag(){dataLayer.push(arguments);}
+        // gtag('js', new Date());
+        // gtag('config', 'UA-XXXXX-Y');
+    </script>
+
+    <!-- Schema.org -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Physician",
+      "name": "Dr. Lucas Duarte",
+      "description": "Médico em Balneário Camboriú/SC. Atendimento humanizado e telemedicina.",
+      "url": "https://drlucasduarte.com.br",
+      "telephone": "+554700000000",
+      "address": {
+        "@type": "PostalAddress",
+        "addressLocality": "Balneário Camboriú",
+        "addressRegion": "SC",
+        "addressCountry": "BR"
+      },
+      "priceRange": "$$"
+    }
+    </script>
 </head>
+
 <body>
     <!-- Skip to content for accessibility -->
     <a href="#main-content" class="skip-link">Pular para o conteúdo principal</a>
@@ -470,6 +503,50 @@
             </div>
         </section>
 
+        <!-- Testimonials Section -->
+        <section class="testimonials section" id="depoimentos">
+            <div class="container">
+                <div class="section__header">
+                    <span class="section__subtitle">O que dizem</span>
+                    <h2 class="section__title">Depoimentos</h2>
+                </div>
+                <div class="content__grid">
+                    <div class="specialty__card">
+                        <div class="specialty__icon">
+                            <i class="fas fa-quote-left"></i>
+                        </div>
+                        <p class="specialty__description" style="font-style: italic; margin-bottom: 1rem;">
+                            "O Dr. Lucas é extremamente atencioso. Explicou tudo com calma e me senti muito acolhida.
+                            Recomendo!"
+                        </p>
+                        <h4 style="color: var(--primary-color); font-weight: 700;">Mariana S.</h4>
+                        <span style="font-size: 0.8rem; color: var(--text-light);">Paciente Presencial</span>
+                    </div>
+                    <div class="specialty__card">
+                        <div class="specialty__icon">
+                            <i class="fas fa-quote-left"></i>
+                        </div>
+                        <p class="specialty__description" style="font-style: italic; margin-bottom: 1rem;">
+                            "Fiz uma teleconsulta e me surpreendi com a qualidade. A atenção aos detalhes foi
+                            impressionante."
+                        </p>
+                        <h4 style="color: var(--primary-color); font-weight: 700;">Carlos A.</h4>
+                        <span style="font-size: 0.8rem; color: var(--text-light);">Paciente Telemedicina</span>
+                    </div>
+                    <div class="specialty__card">
+                        <div class="specialty__icon">
+                            <i class="fas fa-quote-left"></i>
+                        </div>
+                        <p class="specialty__description" style="font-style: italic; margin-bottom: 1rem;">
+                            "Excelente profissional. Demonstra muito conhecimento e empatia. Gratidão pelo atendimento."
+                        </p>
+                        <h4 style="color: var(--primary-color); font-weight: 700;">Fernanda L.</h4>
+                        <span style="font-size: 0.8rem; color: var(--text-light);">Paciente Presencial</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
         <!-- Contact Section -->
         <section class="contact section" id="contato">
             <div class="container">
@@ -519,7 +596,9 @@
                     </div>
                     <div class="location-highlight__content">
                         <h4>Consultório em Balneário Camboriú</h4>
-                        <p>Atendimento presencial em uma das cidades mais belas do litoral catarinense. <strong>Telemedicina disponível</strong> para quem está em outras localidades.</p>
+                        <p>Atendimento presencial em uma das cidades mais belas do litoral catarinense.
+                            <strong>Telemedicina disponível</strong> para quem está em outras localidades.
+                        </p>
                     </div>
                 </div>
 
@@ -534,6 +613,7 @@
                                 <p>Consultório Médico</p>
                                 <p>Balneário Camboriú - SC</p>
                                 <p>Santa Catarina</p>
+
                             </div>
                         </div>
 
@@ -577,20 +657,20 @@
 
                         <div class="form__group">
                             <label for="name" class="form__label">Nome completo</label>
-                            <input type="text" id="name" name="name" class="form__input"
-                                   placeholder="Seu nome" required>
+                            <input type="text" id="name" name="name" class="form__input" placeholder="Seu nome"
+                                required>
                         </div>
 
                         <div class="form__row">
                             <div class="form__group">
                                 <label for="email" class="form__label">E-mail</label>
                                 <input type="email" id="email" name="email" class="form__input"
-                                       placeholder="seu@email.com" required>
+                                    placeholder="seu@email.com" required>
                             </div>
                             <div class="form__group">
                                 <label for="phone" class="form__label">Telefone</label>
                                 <input type="tel" id="phone" name="phone" class="form__input"
-                                       placeholder="(00) 00000-0000">
+                                    placeholder="(00) 00000-0000">
                             </div>
                         </div>
 
@@ -608,7 +688,7 @@
                         <div class="form__group">
                             <label for="message" class="form__label">Mensagem</label>
                             <textarea id="message" name="message" class="form__input form__textarea"
-                                      placeholder="Escreva sua mensagem..." rows="4" required></textarea>
+                                placeholder="Escreva sua mensagem..." rows="4" required></textarea>
                         </div>
 
                         <button type="submit" class="btn btn--primary btn--full">
@@ -657,6 +737,7 @@
                         <li><a href="#formacao">Formação</a></li>
                         <li><a href="#conteudo">Conteúdo</a></li>
                         <li><a href="#contato">Contato</a></li>
+                        <li><a href="politica-privacidade.html">Política de Privacidade</a></li>
                     </ul>
                 </div>
 
@@ -716,7 +797,18 @@
         <i class="fas fa-chevron-up"></i>
     </a>
 
+    <!-- Cookie Consent Banner -->
+    <div id="cookie-banner" class="cookie-banner glass-effect">
+        <div class="cookie-content">
+            <p>Utilizamos cookies para melhorar sua experiência. Ao continuar, você concorda com nossa
+                <a href="politica-privacidade.html">Política de Privacidade</a>.
+            </p>
+            <button id="accept-cookies" class="btn btn--primary btn--sm">Aceitar</button>
+        </div>
+    </div>
+
     <!-- Custom JavaScript -->
     <script src="assets/js/main.js"></script>
 </body>
+
 </html>
