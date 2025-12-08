@@ -2,7 +2,7 @@
    Dr. Lucas Duarte - Main JavaScript
    ============================================ */
 
-document.addEventListener('DOMContentLoaded', function() {
+document.addEventListener('DOMContentLoaded', function () {
     'use strict';
 
     // ==================== VARIABLES ====================
@@ -18,7 +18,7 @@ document.addEventListener('DOMContentLoaded', function() {
     // ==================== MOBILE MENU ====================
     // Open menu
     if (navToggle) {
-        navToggle.addEventListener('click', function() {
+        navToggle.addEventListener('click', function () {
             navMenu.classList.add('show-menu');
             document.body.style.overflow = 'hidden';
         });
@@ -26,22 +26,22 @@ document.addEventListener('DOMContentLoaded', function() {
 
     // Close menu
     if (navClose) {
-        navClose.addEventListener('click', function() {
+        navClose.addEventListener('click', function () {
             navMenu.classList.remove('show-menu');
             document.body.style.overflow = '';
         });
     }
 
     // Close menu when clicking on nav links
-    navLinks.forEach(function(link) {
-        link.addEventListener('click', function() {
+    navLinks.forEach(function (link) {
+        link.addEventListener('click', function () {
             navMenu.classList.remove('show-menu');
             document.body.style.overflow = '';
         });
     });
 
     // Close menu when clicking outside
-    document.addEventListener('click', function(event) {
+    document.addEventListener('click', function (event) {
         if (!navMenu.contains(event.target) && !navToggle.contains(event.target)) {
             navMenu.classList.remove('show-menu');
             document.body.style.overflow = '';
@@ -74,14 +74,14 @@ document.addEventListener('DOMContentLoaded', function() {
     function highlightActiveSection() {
         const scrollY = window.pageYOffset;
 
-        sections.forEach(function(section) {
+        sections.forEach(function (section) {
             const sectionHeight = section.offsetHeight;
             const sectionTop = section.offsetTop - 100;
             const sectionId = section.getAttribute('id');
             const navLink = document.querySelector('.nav__link[href="#' + sectionId + '"]');
 
             if (scrollY > sectionTop && scrollY <= sectionTop + sectionHeight) {
-                navLinks.forEach(function(link) {
+                navLinks.forEach(function (link) {
                     link.classList.remove('active');
                 });
                 if (navLink) {
@@ -94,8 +94,8 @@ document.addEventListener('DOMContentLoaded', function() {
     window.addEventListener('scroll', highlightActiveSection);
 
     // ==================== SMOOTH SCROLL ====================
-    document.querySelectorAll('a[href^="#"]').forEach(function(anchor) {
-        anchor.addEventListener('click', function(e) {
+    document.querySelectorAll('a[href^="#"]').forEach(function (anchor) {
+        anchor.addEventListener('click', function (e) {
             e.preventDefault();
             const targetId = this.getAttribute('href');
 
@@ -117,7 +117,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
     // ==================== CONTACT FORM ====================
     if (contactForm) {
-        contactForm.addEventListener('submit', function(e) {
+        contactForm.addEventListener('submit', function (e) {
             e.preventDefault();
 
             // Get form data
@@ -136,7 +136,7 @@ document.addEventListener('DOMContentLoaded', function() {
             submitBtn.disabled = true;
 
             // Simulate form submission (replace with actual submission logic)
-            setTimeout(function() {
+            setTimeout(function () {
                 // Reset button
                 submitBtn.innerHTML = originalText;
                 submitBtn.disabled = false;
@@ -256,15 +256,15 @@ document.addEventListener('DOMContentLoaded', function() {
         document.body.appendChild(notification);
 
         // Close button functionality
-        notification.querySelector('.notification__close').addEventListener('click', function() {
+        notification.querySelector('.notification__close').addEventListener('click', function () {
             notification.remove();
         });
 
         // Auto remove after 5 seconds
-        setTimeout(function() {
+        setTimeout(function () {
             if (notification.parentNode) {
                 notification.style.animation = 'slideInRight 0.3s ease reverse';
-                setTimeout(function() {
+                setTimeout(function () {
                     notification.remove();
                 }, 300);
             }
@@ -274,7 +274,7 @@ document.addEventListener('DOMContentLoaded', function() {
     // ==================== PHONE MASK ====================
     const phoneInput = document.getElementById('phone');
     if (phoneInput) {
-        phoneInput.addEventListener('input', function(e) {
+        phoneInput.addEventListener('input', function (e) {
             let value = e.target.value.replace(/\D/g, '');
 
             if (value.length > 11) {
@@ -299,8 +299,8 @@ document.addEventListener('DOMContentLoaded', function() {
     function animateOnScroll() {
         const animatedElements = document.querySelectorAll('.specialty__card, .timeline__item, .content__card, .contact__card, .value');
 
-        const observer = new IntersectionObserver(function(entries) {
-            entries.forEach(function(entry) {
+        const observer = new IntersectionObserver(function (entries) {
+            entries.forEach(function (entry) {
                 if (entry.isIntersecting) {
                     entry.target.style.opacity = '1';
                     entry.target.style.transform = 'translateY(0)';
@@ -312,7 +312,7 @@ document.addEventListener('DOMContentLoaded', function() {
             rootMargin: '0px 0px -50px 0px'
         });
 
-        animatedElements.forEach(function(element, index) {
+        animatedElements.forEach(function (element, index) {
             element.style.opacity = '0';
             element.style.transform = 'translateY(30px)';
             element.style.transition = 'opacity 0.6s ease ' + (index * 0.1) + 's, transform 0.6s ease ' + (index * 0.1) + 's';
@@ -327,8 +327,8 @@ document.addEventListener('DOMContentLoaded', function() {
     function animateStats() {
         const stats = document.querySelectorAll('.stat__number');
 
-        const observer = new IntersectionObserver(function(entries) {
-            entries.forEach(function(entry) {
+        const observer = new IntersectionObserver(function (entries) {
+            entries.forEach(function (entry) {
                 if (entry.isIntersecting) {
                     const stat = entry.target;
                     const text = stat.textContent;
@@ -347,7 +347,7 @@ document.addEventListener('DOMContentLoaded', function() {
             });
         }, { threshold: 0.5 });
 
-        stats.forEach(function(stat) {
+        stats.forEach(function (stat) {
             observer.observe(stat);
         });
     }
@@ -360,7 +360,7 @@ document.addEventListener('DOMContentLoaded', function() {
         let current = start;
         let step = 0;
 
-        const timer = setInterval(function() {
+        const timer = setInterval(function () {
             step++;
             current = Math.round(start + increment * step);
 
@@ -381,14 +381,14 @@ document.addEventListener('DOMContentLoaded', function() {
     animateStats();
 
     // ==================== PRELOADER (OPTIONAL) ====================
-    window.addEventListener('load', function() {
+    window.addEventListener('load', function () {
         document.body.classList.add('loaded');
 
         // Remove preloader if exists
         const preloader = document.querySelector('.preloader');
         if (preloader) {
             preloader.style.opacity = '0';
-            setTimeout(function() {
+            setTimeout(function () {
                 preloader.remove();
             }, 500);
         }
@@ -397,9 +397,28 @@ document.addEventListener('DOMContentLoaded', function() {
     // ==================== YEAR UPDATE ====================
     const yearElements = document.querySelectorAll('[data-year]');
     const currentYear = new Date().getFullYear();
-    yearElements.forEach(function(element) {
+    yearElements.forEach(function (element) {
         element.textContent = currentYear;
     });
+
+    // ==================== COOKIE BANNER ====================
+    const cookieBanner = document.getElementById('cookie-banner');
+    const acceptCookiesBtn = document.getElementById('accept-cookies');
+
+    if (cookieBanner && acceptCookiesBtn) {
+        // Check if user has already accepted
+        if (!localStorage.getItem('cookieConsent')) {
+            // Show banner after a small delay
+            setTimeout(function () {
+                cookieBanner.classList.add('show');
+            }, 1000);
+        }
+
+        acceptCookiesBtn.addEventListener('click', function () {
+            localStorage.setItem('cookieConsent', 'true');
+            cookieBanner.classList.remove('show');
+        });
+    }
 
     // ==================== CONSOLE MESSAGE ====================
     console.log('%c Dr. Lucas Duarte ', 'background: #2563eb; color: white; font-size: 20px; padding: 10px 20px; border-radius: 5px;');
