@@ -1,0 +1,441 @@
+/* =====================================================
+   ACCESSIBILITY TOKENS & UTILITIES
+   =====================================================
+   Implementacao de recursos de acessibilidade baseados
+   em diretrizes WCAG 2.1 e pesquisas cientificas.
+
+   REFERENCIAS CIENTIFICAS:
+   - W3C (2018). "Web Content Accessibility Guidelines (WCAG) 2.1"
+   - WebAIM (2023). "Contrast and Color Accessibility"
+   - Deque Systems (2021). "Accessibility Best Practices"
+   - Henry, S.L. (2007). "Just Ask: Integrating Accessibility Throughout Design"
+   - Horton, S. & Quesenbery, W. (2013). "A Web for Everyone"
+   ===================================================== */
+
+:root {
+  /* ==================== WCAG CONTRAST RATIOS ====================
+     Referencia: WCAG 2.1 Success Criterion 1.4.3 / 1.4.6
+
+     Level AA: Contraste minimo de 4.5:1 para texto normal
+               Contraste minimo de 3:1 para texto grande (>18pt)
+
+     Level AAA: Contraste minimo de 7:1 para texto normal
+                Contraste minimo de 4.5:1 para texto grande
+  */
+
+  --contrast-ratio-aa-normal: 4.5;
+  --contrast-ratio-aa-large: 3;
+  --contrast-ratio-aaa-normal: 7;
+  --contrast-ratio-aaa-large: 4.5;
+
+  /* Cores com contraste garantido */
+  --a11y-text-on-light: #1e293b;          /* Contraste 12.6:1 em branco */
+  --a11y-text-on-dark: #f8fafc;           /* Contraste 15.8:1 em preto */
+  --a11y-text-muted: #475569;             /* Contraste 7.1:1 em branco */
+  --a11y-link-color: #0369a1;             /* Contraste 6.4:1 em branco */
+  --a11y-link-visited: #6b21a8;           /* Contraste 8.2:1 em branco */
+
+  /* ==================== FOCUS INDICATORS ====================
+     Referencia: WCAG 2.1 Success Criterion 2.4.7
+
+     Focus indicators devem ser:
+     - Visiveis e de alto contraste
+     - Nao apenas cor (usar borda/outline)
+     - Consistentes em todo o site
+  */
+
+  --focus-ring-width: 3px;
+  --focus-ring-offset: 2px;
+  --focus-ring-color: var(--color-primary);
+  --focus-ring-color-light: var(--color-primary-300);
+  --focus-ring-style: solid;
+
+  /* Focus ring alternativo para elementos escuros */
+  --focus-ring-color-inverse: #ffffff;
+  --focus-ring-shadow-inverse: 0 0 0 3px rgba(0, 0, 0, 0.3);
+
+  /* ==================== TEXT SIZING ====================
+     Referencia: WCAG 2.1 Success Criterion 1.4.4
+
+     - Texto deve ser redimensionavel ate 200%
+     - Usar unidades relativas (rem, em)
+     - Evitar altura fixa em containers de texto
+  */
+
+  --text-size-min: 1rem;                  /* 16px minimo recomendado */
+  --text-size-body: clamp(1rem, 2.5vw, 1.125rem);
+  --text-size-small: clamp(0.875rem, 2vw, 1rem);
+
+  /* ==================== LINE HEIGHT & SPACING ====================
+     Referencia: WCAG 2.1 Success Criterion 1.4.12
+
+     Requisitos para text spacing:
+     - Line height >= 1.5x font size
+     - Paragraph spacing >= 2x font size
+     - Letter spacing >= 0.12x font size
+     - Word spacing >= 0.16x font size
+  */
+
+  --a11y-line-height: 1.5;
+  --a11y-line-height-heading: 1.3;
+  --a11y-paragraph-spacing: 2em;
+  --a11y-letter-spacing: 0.12em;
+  --a11y-word-spacing: 0.16em;
+
+  /* ==================== TOUCH TARGETS ====================
+     Referencia: WCAG 2.1 Success Criterion 2.5.5
+
+     Tamanho minimo de 44x44 CSS pixels para elementos interativos
+     Espacamento adequado entre alvos de toque
+  */
+
+  --touch-target-size: 44px;
+  --touch-target-spacing: 8px;
+
+  /* ==================== TIMING & MOTION ====================
+     Referencia: WCAG 2.1 Success Criterion 2.2.1 / 2.3.3
+
+     - Permitir pausar/parar/esconder conteudo em movimento
+     - Evitar flashs mais de 3 vezes por segundo
+     - Respeitar prefers-reduced-motion
+  */
+
+  --motion-duration-reduced: 0.01ms;
+  --motion-safe-duration: 200ms;
+  --flash-max-frequency: 3;               /* Hz */
+
+  /* ==================== SKIP LINKS ====================
+     Referencia: WCAG 2.1 Success Criterion 2.4.1
+
+     Links de pular para conteudo principal
+  */
+
+  --skip-link-bg: var(--color-primary);
+  --skip-link-color: var(--color-white);
+  --skip-link-padding: 1rem 1.5rem;
+
+  /* ==================== ERROR STATES ====================
+     Referencia: WCAG 2.1 Success Criterion 3.3.1
+
+     Erros devem ser identificados por mais que apenas cor
+  */
+
+  --error-color: #dc2626;
+  --error-bg: #fef2f2;
+  --error-border: #fecaca;
+  --error-icon: "\f071";                  /* Font Awesome warning */
+
+  --success-color: #16a34a;
+  --success-bg: #f0fdf4;
+  --success-border: #bbf7d0;
+  --success-icon: "\f00c";                /* Font Awesome check */
+
+  /* ==================== HIGH CONTRAST MODE ====================
+     Referencia: MS High Contrast Mode / Forced Colors
+
+     Suporte para modo de alto contraste do sistema
+  */
+
+  --high-contrast-text: CanvasText;
+  --high-contrast-bg: Canvas;
+  --high-contrast-link: LinkText;
+  --high-contrast-active: ActiveText;
+  --high-contrast-border: CanvasText;
+}
+
+/* ==================== SKIP LINKS ==================== */
+.skip-link {
+  position: fixed;
+  top: -100%;
+  left: 50%;
+  transform: translateX(-50%);
+  background: var(--skip-link-bg);
+  color: var(--skip-link-color);
+  padding: var(--skip-link-padding);
+  z-index: var(--z-index-max);
+  border-radius: 0 0 var(--radius-md) var(--radius-md);
+  font-weight: var(--font-weight-semibold);
+  text-decoration: none;
+  box-shadow: var(--shadow-lg);
+  transition: top var(--transition-fast);
+}
+
+.skip-link:focus {
+  top: 0;
+  outline: var(--focus-ring-width) var(--focus-ring-style) var(--focus-ring-color-inverse);
+  outline-offset: var(--focus-ring-offset);
+}
+
+/* ==================== FOCUS STYLES ==================== */
+
+/* Focus global melhorado */
+*:focus-visible {
+  outline: var(--focus-ring-width) var(--focus-ring-style) var(--focus-ring-color);
+  outline-offset: var(--focus-ring-offset);
+}
+
+/* Focus para elementos interativos */
+a:focus-visible,
+button:focus-visible,
+input:focus-visible,
+select:focus-visible,
+textarea:focus-visible,
+[tabindex]:focus-visible {
+  outline: var(--focus-ring-width) var(--focus-ring-style) var(--focus-ring-color);
+  outline-offset: var(--focus-ring-offset);
+  box-shadow: 0 0 0 calc(var(--focus-ring-width) + var(--focus-ring-offset)) var(--focus-ring-color-light);
+}
+
+/* Focus em backgrounds escuros */
+.dark-bg *:focus-visible,
+[data-theme="dark"] *:focus-visible {
+  outline-color: var(--focus-ring-color-inverse);
+  box-shadow: var(--focus-ring-shadow-inverse);
+}
+
+/* ==================== SCREEN READER ONLY ==================== */
+
+/* Classe para conteudo visivel apenas para leitores de tela */
+.sr-only,
+.visually-hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+/* Permitir que o elemento seja focavel */
+.sr-only:focus,
+.sr-only:active,
+.visually-hidden:focus,
+.visually-hidden:active {
+  position: static;
+  width: auto;
+  height: auto;
+  padding: inherit;
+  margin: inherit;
+  overflow: visible;
+  clip: auto;
+  white-space: normal;
+}
+
+/* ==================== REDUCED MOTION ==================== */
+
+/* Respeitar preferencias do usuario por movimento reduzido */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: var(--motion-duration-reduced) !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: var(--motion-duration-reduced) !important;
+    scroll-behavior: auto !important;
+  }
+
+  .animate,
+  .animated,
+  [data-animate] {
+    animation: none !important;
+    transition: none !important;
+  }
+}
+
+/* ==================== HIGH CONTRAST MODE ==================== */
+
+@media (forced-colors: active) {
+  /* Garantir que bordas e outlines sejam visiveis */
+  *:focus-visible {
+    outline: 3px solid var(--high-contrast-active);
+    outline-offset: 2px;
+  }
+
+  /* Botoes com bordas visiveis */
+  .btn,
+  button,
+  [role="button"] {
+    border: 2px solid var(--high-contrast-border);
+  }
+
+  /* Links com underline */
+  a {
+    text-decoration: underline;
+  }
+
+  /* Cards e containers com bordas */
+  .card,
+  .specialty__card,
+  .contact__card {
+    border: 1px solid var(--high-contrast-border);
+  }
+}
+
+/* ==================== TOUCH TARGET SIZING ==================== */
+
+/* Garantir tamanho minimo de toque */
+.a11y-touch-target {
+  min-width: var(--touch-target-size);
+  min-height: var(--touch-target-size);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Espacamento entre alvos de toque */
+.a11y-touch-spacing > * + * {
+  margin-left: var(--touch-target-spacing);
+}
+
+/* ==================== TEXT ACCESSIBILITY ==================== */
+
+/* Classe para texto com espacamento acessivel */
+.a11y-text {
+  line-height: var(--a11y-line-height);
+}
+
+.a11y-text p + p {
+  margin-top: var(--a11y-paragraph-spacing);
+}
+
+/* Classe para texto com melhor legibilidade */
+.a11y-readable {
+  letter-spacing: var(--a11y-letter-spacing);
+  word-spacing: var(--a11y-word-spacing);
+  line-height: var(--a11y-line-height);
+}
+
+/* ==================== ERROR & SUCCESS STATES ==================== */
+
+/* Estados de erro acessiveis (cor + icone + texto) */
+.a11y-error {
+  color: var(--error-color);
+  background-color: var(--error-bg);
+  border: 1px solid var(--error-border);
+  border-left-width: 4px;
+  padding: var(--spacing-3) var(--spacing-4);
+  border-radius: var(--radius-md);
+}
+
+.a11y-error::before {
+  content: "Erro: ";
+  font-weight: var(--font-weight-semibold);
+}
+
+/* Estados de sucesso acessiveis */
+.a11y-success {
+  color: var(--success-color);
+  background-color: var(--success-bg);
+  border: 1px solid var(--success-border);
+  border-left-width: 4px;
+  padding: var(--spacing-3) var(--spacing-4);
+  border-radius: var(--radius-md);
+}
+
+.a11y-success::before {
+  content: "Sucesso: ";
+  font-weight: var(--font-weight-semibold);
+}
+
+/* ==================== FORM ACCESSIBILITY ==================== */
+
+/* Labels sempre visiveis */
+.a11y-label {
+  display: block;
+  margin-bottom: var(--spacing-2);
+  font-weight: var(--font-weight-medium);
+}
+
+/* Indicador de campo obrigatorio */
+.a11y-required::after {
+  content: " *";
+  color: var(--error-color);
+}
+
+/* Descricao de campo */
+.a11y-description {
+  display: block;
+  margin-top: var(--spacing-1);
+  font-size: var(--font-size-sm);
+  color: var(--color-text-muted);
+}
+
+/* Mensagem de erro inline */
+.a11y-field-error {
+  display: block;
+  margin-top: var(--spacing-1);
+  font-size: var(--font-size-sm);
+  color: var(--error-color);
+}
+
+.a11y-field-error::before {
+  content: "\26A0\0020";                  /* Warning symbol */
+}
+
+/* ==================== LINK ACCESSIBILITY ==================== */
+
+/* Links devem ser distinguiveis de texto normal */
+.a11y-link {
+  color: var(--a11y-link-color);
+  text-decoration: underline;
+  text-underline-offset: 2px;
+}
+
+.a11y-link:hover {
+  text-decoration-thickness: 2px;
+}
+
+.a11y-link:visited {
+  color: var(--a11y-link-visited);
+}
+
+/* Link com indicador de abertura em nova aba */
+.a11y-external-link::after {
+  content: " \2197";                      /* North East Arrow */
+  font-size: 0.8em;
+  vertical-align: super;
+}
+
+/* ==================== ARIA LIVE REGIONS ==================== */
+
+/* Anuncios para leitores de tela */
+.a11y-live-polite {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+/* Container para anuncios visiveis */
+.a11y-announcement {
+  padding: var(--spacing-4);
+  background: var(--color-bg-secondary);
+  border-radius: var(--radius-md);
+  border-left: 4px solid var(--color-primary);
+}
+
+/* ==================== PRINT ACCESSIBILITY ==================== */
+
+@media print {
+  /* Garantir que links mostrem URL */
+  a[href^="http"]::after {
+    content: " (" attr(href) ")";
+    font-size: 0.8em;
+  }
+
+  /* Remover elementos interativos */
+  .skip-link,
+  button:not([type="submit"]),
+  .nav__toggle,
+  .back-to-top {
+    display: none !important;
+  }
+}

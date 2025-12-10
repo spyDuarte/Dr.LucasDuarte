@@ -1,0 +1,322 @@
+/* =====================================================
+   DESIGN PRINCIPLES - Scientific Foundation
+   =====================================================
+   Este arquivo implementa principios de design baseados
+   em pesquisas cientificas de UX/UI e psicologia cognitiva.
+
+   REFERENCIAS CIENTIFICAS:
+   - Fitts, P.M. (1954). "The information capacity of the human motor system"
+   - Hick, W.E. (1952). "On the rate of gain of information"
+   - Miller, G.A. (1956). "The Magical Number Seven, Plus or Minus Two"
+   - Sweller, J. (1988). "Cognitive Load Theory"
+   - Von Restorff, H. (1933). "The Isolation Effect"
+   - Nielsen, J. (2006). "F-Shaped Pattern For Reading Web Content"
+   - Lidwell, W. et al. (2010). "Universal Principles of Design"
+   ===================================================== */
+
+:root {
+  /* ==================== GOLDEN RATIO (PHI) ====================
+     Referencia: Livio, M. (2002). "The Golden Ratio"
+     Proporcao aurea (~1.618) para harmonia visual
+  */
+  --ratio-golden: 1.618;
+  --ratio-golden-inverse: 0.618;
+
+  /* Espacamentos baseados em Golden Ratio */
+  --golden-sm: calc(1rem * 0.618);      /* ~10px */
+  --golden-base: 1rem;                   /* 16px */
+  --golden-md: calc(1rem * 1.618);       /* ~26px */
+  --golden-lg: calc(1rem * 2.618);       /* ~42px */
+  --golden-xl: calc(1rem * 4.236);       /* ~68px */
+
+  /* ==================== FITTS' LAW ====================
+     Referencia: Fitts, P.M. (1954)
+     "Time to acquire a target is a function of the
+     distance to and size of the target"
+
+     Implicacao: Elementos interativos devem ter tamanhos
+     minimos adequados e estar proximos de areas de atencao.
+  */
+
+  /* Tamanhos minimos de toque (WCAG 2.1 / Apple HIG / Material Design) */
+  --touch-target-min: 44px;              /* Minimo para acessibilidade */
+  --touch-target-comfortable: 48px;       /* Tamanho confortavel */
+  --touch-target-large: 56px;             /* Para acoes primarias */
+
+  /* Areas de clique expandidas */
+  --click-area-padding: 0.5rem;
+
+  /* ==================== HICK'S LAW ====================
+     Referencia: Hick, W.E. (1952)
+     "Time to make a decision increases with the number
+     and complexity of choices"
+
+     Implicacao: Limitar opcoes visiveis, agrupar itens relacionados.
+  */
+
+  /* Numero maximo de itens em menus/listas (7 +/- 2) */
+  --max-menu-items: 7;
+  --max-card-grid-items: 6;
+  --max-nav-items: 7;
+
+  /* ==================== MILLER'S LAW ====================
+     Referencia: Miller, G.A. (1956)
+     "The average person can only keep 7 (plus or minus 2)
+     items in their working memory"
+
+     Implicacao: Chunking de informacoes em grupos de 3-5 itens.
+  */
+
+  /* Chunking de conteudo */
+  --chunk-size-min: 3;
+  --chunk-size-optimal: 4;
+  --chunk-size-max: 5;
+
+  /* ==================== COGNITIVE LOAD THEORY ====================
+     Referencia: Sweller, J. (1988)
+     Reducao de carga cognitiva atraves de design consistente
+     e hierarquia visual clara.
+  */
+
+  /* Hierarquia visual - Escala de tamanhos (Major Third 1.25) */
+  --scale-ratio: 1.25;
+
+  /* Contraste de hierarquia */
+  --hierarchy-primary: 1;
+  --hierarchy-secondary: 0.8;
+  --hierarchy-tertiary: 0.6;
+  --hierarchy-muted: 0.4;
+
+  /* ==================== VON RESTORFF EFFECT ====================
+     Referencia: Von Restorff, H. (1933)
+     "Items that stand out from their surroundings are
+     more likely to be remembered"
+
+     Implicacao: CTAs e elementos importantes devem ter
+     destaque visual significativo.
+  */
+
+  /* Destaque de CTAs */
+  --cta-scale-hover: 1.02;
+  --cta-shadow-hover: 0 8px 25px rgba(12, 74, 110, 0.25);
+  --cta-color-contrast-ratio: 4.5;       /* WCAG AA minimo */
+  --cta-color-contrast-ratio-lg: 7;      /* WCAG AAA */
+
+  /* ==================== PROXIMITY PRINCIPLE ====================
+     Referencia: Wertheimer, M. (1923). Gestalt Principles
+     "Objects near each other are perceived as a group"
+  */
+
+  /* Espacamento entre grupos vs dentro de grupos */
+  --proximity-within-group: var(--spacing-2);
+  --proximity-between-groups: var(--spacing-8);
+
+  /* ==================== LAW OF SIMILARITY ====================
+     Referencia: Wertheimer, M. (1923). Gestalt Principles
+     "Similar objects are perceived as more related"
+  */
+
+  /* Consistencia visual para elementos similares */
+  --similarity-border-radius: var(--radius-lg);
+  --similarity-shadow: var(--shadow-md);
+  --similarity-transition: var(--transition-base);
+
+  /* ==================== VISUAL HIERARCHY ====================
+     Referencia: Few, S. (2012). "Show Me the Numbers"
+     Escala visual para guiar a atencao do usuario
+  */
+
+  /* Tamanhos de elementos por importancia */
+  --visual-weight-primary: 1.5;
+  --visual-weight-secondary: 1.25;
+  --visual-weight-tertiary: 1;
+  --visual-weight-quaternary: 0.875;
+
+  /* ==================== F-PATTERN / Z-PATTERN ====================
+     Referencia: Nielsen Norman Group (2006)
+     Padroes de leitura em ambientes digitais
+  */
+
+  /* Areas de atencao primaria (canto superior esquerdo) */
+  --attention-zone-primary: top-left;
+  --attention-zone-secondary: top-right;
+  --attention-zone-tertiary: center;
+
+  /* ==================== READING COMFORT ====================
+     Referencia: Bringhurst, R. (2012). "The Elements of Typographic Style"
+     Largura ideal de linha para leitura confortavel
+  */
+
+  /* Caracteres por linha (45-75 ideal, 66 otimo) */
+  --reading-width-min: 45ch;
+  --reading-width-optimal: 66ch;
+  --reading-width-max: 75ch;
+
+  /* Espacamento de linha para legibilidade */
+  --reading-line-height: 1.6;
+  --reading-paragraph-spacing: 1.5em;
+
+  /* ==================== COLOR PSYCHOLOGY (HEALTHCARE) ====================
+     Referencia: Elliot, A.J. (2015). "Color and Psychological Functioning"
+     Cores que transmitem confianca e calma em contexto medico
+  */
+
+  /* Azul: Confianca, Profissionalismo, Calma */
+  --psychology-trust: var(--color-primary);
+
+  /* Verde: Saude, Natureza, Equilibrio */
+  --psychology-health: var(--color-medical-green);
+
+  /* Teal: Sofisticacao, Equilibrio emocional */
+  --psychology-balance: var(--color-secondary);
+
+  /* Dourado: Qualidade, Premium, Excelencia */
+  --psychology-excellence: var(--color-gold);
+
+  /* ==================== RESPONSE TIME EXPECTATIONS ====================
+     Referencia: Nielsen, J. (1993). "Response Time Limits"
+     - 0.1s: Sensacao de resposta instantanea
+     - 1.0s: Limite para manter fluxo de pensamento
+     - 10s: Limite para manter atencao do usuario
+  */
+
+  --response-instant: 100ms;
+  --response-immediate: 300ms;
+  --response-animation: 500ms;
+  --response-page-load: 1000ms;
+
+  /* ==================== DOHERTY THRESHOLD ====================
+     Referencia: Doherty, W.J. (1982)
+     "Productivity soars when response time falls below 400ms"
+  */
+
+  --doherty-threshold: 400ms;
+
+  /* ==================== WHITESPACE RATIOS ====================
+     Referencia: Tondreau, B. (2009). "Layout Essentials"
+     Espacamento que melhora legibilidade e estetica
+  */
+
+  /* Proporcoes de whitespace */
+  --whitespace-minimal: 0.25;
+  --whitespace-compact: 0.5;
+  --whitespace-comfortable: 1;
+  --whitespace-spacious: 1.5;
+  --whitespace-generous: 2;
+
+  /* ==================== AFFORDANCE INDICATORS ====================
+     Referencia: Norman, D. (1988). "The Design of Everyday Things"
+     Indicadores visuais de interatividade
+  */
+
+  /* Indicadores de clicabilidade */
+  --affordance-cursor-pointer: pointer;
+  --affordance-hover-lift: translateY(-2px);
+  --affordance-active-press: translateY(0);
+  --affordance-focus-ring: 2px solid var(--color-primary);
+
+  /* ==================== PROGRESSIVE DISCLOSURE ====================
+     Referencia: Tidwell, J. (2010). "Designing Interfaces"
+     Revelar informacao gradualmente para reduzir sobrecarga
+  */
+
+  /* Niveis de informacao */
+  --disclosure-level-1: visible;
+  --disclosure-level-2: on-hover;
+  --disclosure-level-3: on-click;
+
+  /* ==================== VISUAL RHYTHM ====================
+     Referencia: Lupton, E. (2010). "Thinking with Type"
+     Ritmo visual consistente atraves de espacamento
+  */
+
+  /* Baseline grid (8px) */
+  --baseline-unit: 8px;
+  --baseline-2x: 16px;
+  --baseline-3x: 24px;
+  --baseline-4x: 32px;
+  --baseline-5x: 40px;
+  --baseline-6x: 48px;
+  --baseline-8x: 64px;
+}
+
+/* ==================== UTILITY CLASSES BASED ON PRINCIPLES ==================== */
+
+/* Fitts' Law: Touch-friendly targets */
+.touch-target {
+  min-width: var(--touch-target-min);
+  min-height: var(--touch-target-min);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.touch-target--comfortable {
+  min-width: var(--touch-target-comfortable);
+  min-height: var(--touch-target-comfortable);
+}
+
+.touch-target--large {
+  min-width: var(--touch-target-large);
+  min-height: var(--touch-target-large);
+}
+
+/* Von Restorff: Visual emphasis */
+.visual-emphasis {
+  position: relative;
+  z-index: 1;
+}
+
+.visual-emphasis::before {
+  content: '';
+  position: absolute;
+  inset: -4px;
+  background: var(--gradient-primary);
+  opacity: 0.1;
+  border-radius: calc(var(--radius-lg) + 4px);
+  z-index: -1;
+}
+
+/* Cognitive Load: Reading width constraint */
+.reading-width {
+  max-width: var(--reading-width-optimal);
+  margin-inline: auto;
+}
+
+.reading-width--narrow {
+  max-width: var(--reading-width-min);
+}
+
+.reading-width--wide {
+  max-width: var(--reading-width-max);
+}
+
+/* Gestalt Proximity: Group spacing */
+.group-spacing {
+  display: flex;
+  flex-direction: column;
+  gap: var(--proximity-within-group);
+}
+
+.group-spacing--between {
+  gap: var(--proximity-between-groups);
+}
+
+/* Visual Rhythm: Baseline grid alignment */
+.baseline-aligned {
+  line-height: var(--baseline-3x);
+  margin-bottom: var(--baseline-2x);
+}
+
+/* Golden Ratio spacing */
+.golden-spacing {
+  padding: var(--golden-md);
+}
+
+.golden-spacing--compact {
+  padding: var(--golden-sm);
+}
+
+.golden-spacing--spacious {
+  padding: var(--golden-lg);
+}

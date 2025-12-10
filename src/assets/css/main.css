@@ -22,12 +22,14 @@
 
 /* ==================== 1. SETTINGS ==================== */
 @import 'base/_variables.css';
+@import 'base/_design-principles.css';
 
 /* ==================== 2. TOOLS ==================== */
 /* (Mixins/Functions - Nao aplicavel em CSS vanilla) */
 
 /* ==================== 3. GENERIC ==================== */
 @import 'base/_reset.css';
+@import 'base/_accessibility.css';
 
 /* ==================== 4. ELEMENTS ==================== */
 @import 'base/_typography.css';
