@@ -1,0 +1,200 @@
+/* =====================================================
+   FORMS
+   Metodologia: Inclusive Design Patterns
+   Referencia: Pickering, H. - "Inclusive Design Patterns"
+   ===================================================== */
+
+/* ==================== FORM CONTAINER ==================== */
+.form {
+  width: 100%;
+}
+
+.form__title {
+  font-size: var(--font-size-xl);
+  font-weight: var(--font-weight-semibold);
+  color: var(--color-text-primary);
+  margin-bottom: var(--spacing-xl);
+  text-align: center;
+}
+
+/* ==================== FORM GROUPS ==================== */
+.form__group {
+  margin-bottom: var(--spacing-lg);
+}
+
+.form__row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--spacing-md);
+}
+
+/* ==================== LABELS ==================== */
+.form__label {
+  display: block;
+  font-size: var(--font-size-sm);
+  font-weight: var(--font-weight-medium);
+  color: var(--color-text-primary);
+  margin-bottom: var(--spacing-sm);
+}
+
+.form__label--required::after {
+  content: ' *';
+  color: var(--color-error);
+}
+
+/* ==================== INPUT FIELDS ==================== */
+.form__input,
+.form__textarea,
+.form__select {
+  width: 100%;
+  padding: 0.875rem var(--spacing-md);
+  font-family: var(--font-family-primary);
+  font-size: var(--font-size-base);
+  color: var(--color-text-primary);
+  background-color: var(--color-white);
+  border: 2px solid var(--color-gray-200);
+  border-radius: var(--radius-base);
+  transition: all var(--transition-base);
+}
+
+.form__input:hover,
+.form__textarea:hover,
+.form__select:hover {
+  border-color: var(--color-gray-300);
+}
+
+.form__input:focus,
+.form__textarea:focus,
+.form__select:focus {
+  outline: none;
+  border-color: var(--color-primary);
+  box-shadow: 0 0 0 3px rgba(12, 74, 110, 0.1);
+}
+
+.form__input::placeholder,
+.form__textarea::placeholder {
+  color: var(--color-text-light);
+}
+
+/* ==================== INPUT VARIANTS ==================== */
+
+/* Error State */
+.form__input--error,
+.form__textarea--error,
+.form__select--error {
+  border-color: var(--color-error);
+}
+
+.form__input--error:focus,
+.form__textarea--error:focus {
+  box-shadow: 0 0 0 3px rgba(239, 68, 68, 0.1);
+}
+
+/* Success State */
+.form__input--success,
+.form__textarea--success {
+  border-color: var(--color-success);
+}
+
+/* Disabled State */
+.form__input:disabled,
+.form__textarea:disabled,
+.form__select:disabled {
+  background-color: var(--color-gray-100);
+  cursor: not-allowed;
+  opacity: 0.7;
+}
+
+/* ==================== TEXTAREA ==================== */
+.form__textarea {
+  resize: vertical;
+  min-height: 120px;
+  line-height: var(--line-height-relaxed);
+}
+
+/* ==================== SELECT ==================== */
+.form__select {
+  appearance: none;
+  background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 20 20'%3e%3cpath stroke='%236b7280' stroke-linecap='round' stroke-linejoin='round' stroke-width='1.5' d='M6 8l4 4 4-4'/%3e%3c/svg%3e");
+  background-position: right 0.75rem center;
+  background-repeat: no-repeat;
+  background-size: 1.5em 1.5em;
+  padding-right: 2.5rem;
+  cursor: pointer;
+}
+
+/* ==================== CHECKBOX & RADIO ==================== */
+.form__checkbox,
+.form__radio {
+  display: flex;
+  align-items: flex-start;
+  gap: var(--spacing-sm);
+  cursor: pointer;
+}
+
+.form__checkbox input,
+.form__radio input {
+  width: 1.25rem;
+  height: 1.25rem;
+  margin-top: 2px;
+  accent-color: var(--color-primary);
+  cursor: pointer;
+}
+
+.form__checkbox-label,
+.form__radio-label {
+  font-size: var(--font-size-base);
+  color: var(--color-text-secondary);
+  line-height: var(--line-height-normal);
+}
+
+/* ==================== HELP TEXT & ERRORS ==================== */
+.form__help {
+  display: block;
+  font-size: var(--font-size-sm);
+  color: var(--color-text-muted);
+  margin-top: var(--spacing-xs);
+}
+
+.form__error {
+  display: block;
+  font-size: var(--font-size-sm);
+  color: var(--color-error);
+  margin-top: var(--spacing-xs);
+}
+
+/* ==================== INPUT WITH ICON ==================== */
+.form__input-wrapper {
+  position: relative;
+}
+
+.form__input-wrapper .form__input {
+  padding-left: 2.75rem;
+}
+
+.form__input-icon {
+  position: absolute;
+  left: var(--spacing-md);
+  top: 50%;
+  transform: translateY(-50%);
+  color: var(--color-text-muted);
+}
+
+/* ==================== FORM CONTAINER (Boxed) ==================== */
+.form-container {
+  background-color: var(--color-white);
+  padding: var(--spacing-2xl);
+  border-radius: var(--radius-xl);
+  box-shadow: var(--shadow-lg);
+}
+
+/* ==================== RESPONSIVE ==================== */
+@media (max-width: 768px) {
+  .form__row {
+    grid-template-columns: 1fr;
+  }
+
+  .form-container {
+    padding: var(--spacing-lg);
+  }
+}

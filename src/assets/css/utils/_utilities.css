@@ -1,0 +1,137 @@
+/* =====================================================
+   UTILITIES
+   Metodologia: Utility-First CSS (Tailwind Inspiration)
+   Referencia: Adam Wathan - "CSS Utility Classes"
+   ===================================================== */
+
+/* ==================== DISPLAY ==================== */
+.d-none { display: none !important; }
+.d-block { display: block !important; }
+.d-inline { display: inline !important; }
+.d-inline-block { display: inline-block !important; }
+.d-flex { display: flex !important; }
+.d-inline-flex { display: inline-flex !important; }
+.d-grid { display: grid !important; }
+
+/* ==================== VISIBILITY ==================== */
+.visible { visibility: visible !important; }
+.invisible { visibility: hidden !important; }
+.opacity-0 { opacity: 0 !important; }
+.opacity-50 { opacity: 0.5 !important; }
+.opacity-100 { opacity: 1 !important; }
+
+/* ==================== POSITION ==================== */
+.position-relative { position: relative !important; }
+.position-absolute { position: absolute !important; }
+.position-fixed { position: fixed !important; }
+.position-sticky { position: sticky !important; }
+
+/* ==================== SPACING - MARGIN ==================== */
+.m-0 { margin: 0 !important; }
+.m-auto { margin: auto !important; }
+.mx-auto { margin-left: auto !important; margin-right: auto !important; }
+
+.mt-0 { margin-top: 0 !important; }
+.mt-sm { margin-top: var(--spacing-sm) !important; }
+.mt-md { margin-top: var(--spacing-md) !important; }
+.mt-lg { margin-top: var(--spacing-lg) !important; }
+.mt-xl { margin-top: var(--spacing-xl) !important; }
+
+.mb-0 { margin-bottom: 0 !important; }
+.mb-sm { margin-bottom: var(--spacing-sm) !important; }
+.mb-md { margin-bottom: var(--spacing-md) !important; }
+.mb-lg { margin-bottom: var(--spacing-lg) !important; }
+.mb-xl { margin-bottom: var(--spacing-xl) !important; }
+
+.ml-auto { margin-left: auto !important; }
+.mr-auto { margin-right: auto !important; }
+
+/* ==================== SPACING - PADDING ==================== */
+.p-0 { padding: 0 !important; }
+.p-sm { padding: var(--spacing-sm) !important; }
+.p-md { padding: var(--spacing-md) !important; }
+.p-lg { padding: var(--spacing-lg) !important; }
+.p-xl { padding: var(--spacing-xl) !important; }
+
+.px-md { padding-left: var(--spacing-md) !important; padding-right: var(--spacing-md) !important; }
+.py-md { padding-top: var(--spacing-md) !important; padding-bottom: var(--spacing-md) !important; }
+
+/* ==================== WIDTH & HEIGHT ==================== */
+.w-100 { width: 100% !important; }
+.w-auto { width: auto !important; }
+.h-100 { height: 100% !important; }
+.h-auto { height: auto !important; }
+
+.min-h-screen { min-height: 100vh !important; }
+.max-w-full { max-width: 100% !important; }
+
+/* ==================== BORDERS ==================== */
+.border { border: 1px solid var(--color-gray-200) !important; }
+.border-0 { border: 0 !important; }
+.border-top { border-top: 1px solid var(--color-gray-200) !important; }
+.border-bottom { border-bottom: 1px solid var(--color-gray-200) !important; }
+
+.rounded { border-radius: var(--radius-base) !important; }
+.rounded-lg { border-radius: var(--radius-lg) !important; }
+.rounded-full { border-radius: var(--radius-full) !important; }
+.rounded-0 { border-radius: 0 !important; }
+
+/* ==================== SHADOWS ==================== */
+.shadow-none { box-shadow: none !important; }
+.shadow-sm { box-shadow: var(--shadow-sm) !important; }
+.shadow { box-shadow: var(--shadow-md) !important; }
+.shadow-lg { box-shadow: var(--shadow-lg) !important; }
+.shadow-xl { box-shadow: var(--shadow-xl) !important; }
+
+/* ==================== BACKGROUNDS ==================== */
+.bg-white { background-color: var(--color-white) !important; }
+.bg-light { background-color: var(--color-bg-secondary) !important; }
+.bg-primary { background-color: var(--color-primary) !important; }
+.bg-transparent { background-color: transparent !important; }
+
+/* ==================== OVERFLOW ==================== */
+.overflow-hidden { overflow: hidden !important; }
+.overflow-auto { overflow: auto !important; }
+.overflow-scroll { overflow: scroll !important; }
+.overflow-visible { overflow: visible !important; }
+
+/* ==================== CURSOR ==================== */
+.cursor-pointer { cursor: pointer !important; }
+.cursor-default { cursor: default !important; }
+.cursor-not-allowed { cursor: not-allowed !important; }
+
+/* ==================== USER SELECT ==================== */
+.select-none { user-select: none !important; }
+.select-all { user-select: all !important; }
+.select-auto { user-select: auto !important; }
+
+/* ==================== POINTER EVENTS ==================== */
+.pointer-events-none { pointer-events: none !important; }
+.pointer-events-auto { pointer-events: auto !important; }
+
+/* ==================== SCREEN READER ONLY ==================== */
+.sr-only {
+  position: absolute !important;
+  width: 1px !important;
+  height: 1px !important;
+  padding: 0 !important;
+  margin: -1px !important;
+  overflow: hidden !important;
+  clip: rect(0, 0, 0, 0) !important;
+  white-space: nowrap !important;
+  border: 0 !important;
+}
+
+/* ==================== RESPONSIVE UTILITIES ==================== */
+@media (max-width: 768px) {
+  .d-md-none { display: none !important; }
+  .d-md-block { display: block !important; }
+  .d-md-flex { display: flex !important; }
+
+  .text-md-center { text-align: center !important; }
+}
+
+@media (max-width: 480px) {
+  .d-sm-none { display: none !important; }
+  .d-sm-block { display: block !important; }
+}
