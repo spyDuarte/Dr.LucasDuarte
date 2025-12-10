@@ -1,0 +1,103 @@
+/* =====================================================
+   MAIN CSS - Dr. Lucas Duarte
+   =====================================================
+   Arquitetura: ITCSS (Inverted Triangle CSS)
+   Metodologia: BEM (Block Element Modifier)
+
+   ORDEM DE IMPORTACAO (ITCSS):
+   1. Settings - Variaveis e configuracoes globais
+   2. Tools - Mixins e funcoes (N/A em CSS puro)
+   3. Generic - Reset e normalizacao
+   4. Elements - Estilos de elementos HTML base
+   5. Objects - Padroes de design estruturais
+   6. Components - Componentes de UI especificos
+   7. Pages - Estilos especificos de paginas
+   8. Utilities - Classes utilitarias (override)
+
+   REFERENCIAS CIENTIFICAS:
+   - Roberts, H. (2014). "Managing CSS Projects with ITCSS"
+   - Gallagher, N. (2013). "Normalize.css"
+   - Yandex (2010). "BEM Methodology"
+   ===================================================== */
+
+/* ==================== 1. SETTINGS ==================== */
+@import 'base/_variables.css';
+
+/* ==================== 2. TOOLS ==================== */
+/* (Mixins/Functions - Nao aplicavel em CSS vanilla) */
+
+/* ==================== 3. GENERIC ==================== */
+@import 'base/_reset.css';
+
+/* ==================== 4. ELEMENTS ==================== */
+@import 'base/_typography.css';
+
+/* ==================== 5. OBJECTS (Layouts) ==================== */
+@import 'layouts/_container.css';
+
+/* ==================== 6. COMPONENTS ==================== */
+@import 'components/_buttons.css';
+@import 'components/_cards.css';
+@import 'components/_forms.css';
+@import 'components/_header.css';
+@import 'components/_footer.css';
+@import 'components/_floating.css';
+
+/* ==================== 7. PAGES ==================== */
+@import 'pages/_hero.css';
+@import 'pages/_sections.css';
+
+/* ==================== 8. UTILITIES ==================== */
+@import 'utils/_utilities.css';
+@import 'utils/_animations.css';
+
+/* ==================== PRINT STYLES ==================== */
+@media print {
+  *,
+  *::before,
+  *::after {
+    background: transparent !important;
+    color: #000 !important;
+    box-shadow: none !important;
+    text-shadow: none !important;
+  }
+
+  a,
+  a:visited {
+    text-decoration: underline;
+  }
+
+  a[href]::after {
+    content: " (" attr(href) ")";
+  }
+
+  thead {
+    display: table-header-group;
+  }
+
+  tr,
+  img {
+    page-break-inside: avoid;
+  }
+
+  p,
+  h2,
+  h3 {
+    orphans: 3;
+    widows: 3;
+  }
+
+  h2,
+  h3 {
+    page-break-after: avoid;
+  }
+
+  .header,
+  .footer,
+  .nav,
+  .back-to-top,
+  .whatsapp-float,
+  .cookie-banner {
+    display: none !important;
+  }
+}
