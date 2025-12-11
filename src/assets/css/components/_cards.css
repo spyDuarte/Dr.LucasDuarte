@@ -1,26 +1,40 @@
 /* =====================================================
-   CARDS
-   Metodologia: Component-Driven Development
-   Referencia: Sitepoint - "Modern CSS Card Design"
+   CARDS v4.0 - Neurodesign Components
+   =====================================================
+   Componentes de card otimizados com principios de neurodesign
+
+   REFERENCIAS CIENTIFICAS:
+   - Norman, D.A. (2004). "Emotional Design"
+   - Tractinsky, N. et al. (2000). "What is beautiful is usable"
+   - Bar, M. & Neta, M. (2006). "Humans prefer curved visual objects"
+   - Gestalt Principles - Wertheimer, M. (1923)
    ===================================================== */
 
-/* ==================== BASE CARD ==================== */
+/* ==================== BASE CARD ====================
+   Card base com principios de elevacao e profundidade
+   Referencia: Material Design Elevation System
+*/
 .card {
-  background-color: var(--color-white);
-  border-radius: var(--radius-lg);
-  box-shadow: var(--shadow-sm);
-  border: 1px solid var(--color-gray-100);
+  background-color: var(--color-bg-elevated);
+  border-radius: var(--radius-xl);
+  box-shadow: var(--shadow-card);
+  border: 1px solid rgba(0, 0, 0, 0.03);
   overflow: hidden;
-  transition: all var(--transition-base);
+  transition: transform var(--transition-base) var(--ease-out),
+              box-shadow var(--transition-base) var(--ease-out);
+  position: relative;
 }
 
 .card:hover {
-  box-shadow: var(--shadow-lg);
+  transform: translateY(-4px);
+  box-shadow: var(--shadow-card-hover);
 }
 
 /* ==================== CARD VARIANTS ==================== */
 
-/* Glass Card */
+/* Glass Card - Efeito Glassmorphism
+   Referencia: Aesthetic-Usability Effect (Tractinsky, 2000)
+*/
 .card--glass {
   background: var(--glass-bg);
   backdrop-filter: blur(var(--glass-blur));
@@ -29,9 +43,14 @@
   box-shadow: var(--glass-shadow);
 }
 
-/* Elevated Card */
+.card--glass:hover {
+  background: var(--glass-bg-strong);
+  box-shadow: var(--shadow-lg);
+}
+
+/* Elevated Card - Maior destaque */
 .card--elevated {
-  box-shadow: var(--shadow-md);
+  box-shadow: var(--shadow-lg);
 }
 
 .card--elevated:hover {
@@ -47,19 +66,40 @@
 
 .card--bordered:hover {
   border-color: var(--color-primary);
+  box-shadow: var(--shadow-sm);
+}
+
+/* Interactive Card - Com affordance visual */
+.card--interactive {
+  cursor: pointer;
+}
+
+.card--interactive::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: var(--gradient-primary);
+  opacity: 0;
+  transition: opacity var(--transition-base);
+  pointer-events: none;
+}
+
+.card--interactive:hover::after {
+  opacity: 0.02;
 }
 
 /* ==================== CARD PARTS ==================== */
 .card__image {
   position: relative;
   overflow: hidden;
+  aspect-ratio: 16/10;
 }
 
 .card__image img {
   width: 100%;
   height: 100%;
   object-fit: cover;
-  transition: transform var(--transition-slow);
+  transition: transform var(--transition-slow) var(--ease-out);
 }
 
 .card:hover .card__image img {
@@ -69,7 +109,7 @@
 .card__image-placeholder {
   width: 100%;
   height: 200px;
-  background: linear-gradient(135deg, var(--color-gray-100) 0%, var(--color-gray-200) 100%);
+  background: var(--gradient-subtle);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -82,36 +122,40 @@
 
 .card__badge {
   position: absolute;
-  top: var(--spacing-md);
-  left: var(--spacing-md);
-  background-color: var(--color-primary);
+  top: var(--spacing-4);
+  left: var(--spacing-4);
+  background: var(--gradient-primary);
   color: var(--color-white);
   font-size: var(--font-size-xs);
-  font-weight: var(--font-weight-semibold);
-  padding: var(--spacing-xs) var(--spacing-sm);
-  border-radius: var(--radius-md);
+  font-weight: var(--font-weight-bold);
+  padding: var(--spacing-1-5) var(--spacing-3);
+  border-radius: var(--radius-full);
   text-transform: uppercase;
+  letter-spacing: var(--letter-spacing-wide);
+  box-shadow: var(--shadow-sm);
 }
 
 .card__content {
-  padding: var(--spacing-lg);
+  padding: var(--spacing-6);
 }
 
 .card__header {
-  margin-bottom: var(--spacing-md);
+  margin-bottom: var(--spacing-4);
 }
 
 .card__title {
-  font-size: var(--font-size-lg);
+  font-family: var(--font-family-display);
+  font-size: var(--font-size-xl);
   font-weight: var(--font-weight-semibold);
   color: var(--color-text-primary);
-  margin-bottom: var(--spacing-xs);
+  margin-bottom: var(--spacing-2);
   line-height: var(--line-height-snug);
 }
 
 .card__subtitle {
   font-size: var(--font-size-sm);
   color: var(--color-text-muted);
+  font-weight: var(--font-weight-medium);
 }
 
 .card__body {
@@ -121,7 +165,7 @@
 }
 
 .card__footer {
-  padding: var(--spacing-md) var(--spacing-lg);
+  padding: var(--spacing-4) var(--spacing-6);
   border-top: 1px solid var(--color-gray-100);
   background-color: var(--color-bg-secondary);
 }
@@ -129,128 +173,481 @@
 .card__link {
   display: inline-flex;
   align-items: center;
-  gap: var(--spacing-xs);
+  gap: var(--spacing-2);
   font-size: var(--font-size-base);
   font-weight: var(--font-weight-semibold);
   color: var(--color-primary);
-  transition: gap var(--transition-base);
+  transition: gap var(--transition-base) var(--ease-out);
 }
 
 .card__link:hover {
-  gap: var(--spacing-sm);
+  gap: var(--spacing-3);
 }
 
-/* ==================== SPECIALTY CARD ==================== */
-.specialty-card {
+.card__link i {
+  transition: transform var(--transition-base) var(--ease-out);
+}
+
+.card__link:hover i {
+  transform: translateX(4px);
+}
+
+/* ==================== SPECIALTY CARD ====================
+   Card para especialidades medicas
+   Usa Gestalt Proximity + Von Restorff para destaque
+*/
+.specialty__card {
   background: var(--glass-bg);
   backdrop-filter: blur(var(--glass-blur));
   -webkit-backdrop-filter: blur(var(--glass-blur));
   border: 1px solid var(--glass-border);
-  padding: var(--spacing-xl);
-  border-radius: var(--radius-lg);
-  box-shadow: var(--shadow-sm);
-  transition: all var(--transition-base);
+  padding: var(--spacing-8);
+  border-radius: var(--radius-2xl);
+  box-shadow: var(--shadow-card);
+  transition: all var(--transition-base) var(--ease-spring);
   text-align: center;
+  position: relative;
+  overflow: hidden;
 }
 
-.specialty-card:hover {
+/* Linha de destaque no topo */
+.specialty__card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 3px;
+  background: var(--gradient-primary);
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform var(--transition-base) var(--ease-out);
+}
+
+.specialty__card:hover {
   transform: translateY(-8px);
-  box-shadow: var(--shadow-xl);
-  border-color: var(--color-secondary);
+  box-shadow: var(--shadow-xl), var(--shadow-primary);
+  border-color: rgba(12, 74, 110, 0.1);
 }
 
-.specialty-card__icon {
+.specialty__card:hover::before {
+  transform: scaleX(1);
+}
+
+/* Icone com container circular */
+.specialty__icon {
   width: 80px;
   height: 80px;
-  background: linear-gradient(135deg, rgba(37, 99, 235, 0.1) 0%, rgba(6, 182, 212, 0.1) 100%);
+  background: linear-gradient(135deg, rgba(12, 74, 110, 0.08) 0%, rgba(8, 145, 178, 0.08) 100%);
   border-radius: var(--radius-full);
   display: flex;
   align-items: center;
   justify-content: center;
-  margin: 0 auto var(--spacing-lg);
+  margin: 0 auto var(--spacing-6);
+  transition: all var(--transition-base) var(--ease-spring);
+  position: relative;
+}
+
+/* Anel decorativo */
+.specialty__icon::before {
+  content: '';
+  position: absolute;
+  inset: -4px;
+  border-radius: var(--radius-full);
+  border: 2px dashed transparent;
+  transition: border-color var(--transition-base);
+}
+
+.specialty__card:hover .specialty__icon {
+  background: var(--gradient-primary);
+  transform: scale(1.1) rotate(5deg);
+  box-shadow: var(--shadow-primary);
+}
+
+.specialty__card:hover .specialty__icon::before {
+  border-color: rgba(12, 74, 110, 0.2);
+}
+
+.specialty__icon i {
+  font-size: 2rem;
+  color: var(--color-primary);
   transition: all var(--transition-base);
 }
 
-.specialty-card:hover .specialty-card__icon {
-  background: var(--gradient-primary);
-}
-
-.specialty-card__icon i {
-  font-size: 2rem;
-  color: var(--color-primary);
-  transition: color var(--transition-base);
-}
-
-.specialty-card:hover .specialty-card__icon i {
+.specialty__card:hover .specialty__icon i {
   color: var(--color-white);
+  transform: scale(1.1);
 }
 
-.specialty-card__title {
+.specialty__title {
+  font-family: var(--font-family-display);
   font-size: var(--font-size-lg);
   font-weight: var(--font-weight-semibold);
   color: var(--color-text-primary);
-  margin-bottom: var(--spacing-sm);
+  margin-bottom: var(--spacing-3);
+  transition: color var(--transition-base);
 }
 
-.specialty-card__description {
+.specialty__card:hover .specialty__title {
+  color: var(--color-primary);
+}
+
+.specialty__description {
   font-size: var(--font-size-base);
   color: var(--color-text-muted);
   line-height: var(--line-height-relaxed);
 }
 
-/* ==================== CONTACT CARD ==================== */
-.contact-card {
+/* ==================== CONTACT CARD ====================
+   Card de informacoes de contato
+   Layout horizontal com affordance visual
+*/
+.contact__card {
   display: flex;
-  gap: var(--spacing-lg);
-  padding: var(--spacing-lg);
-  background-color: var(--color-white);
-  border-radius: var(--radius-lg);
+  gap: var(--spacing-5);
+  padding: var(--spacing-6);
+  background-color: var(--color-bg-elevated);
+  border-radius: var(--radius-xl);
   box-shadow: var(--shadow-sm);
-  transition: all var(--transition-base);
+  transition: all var(--transition-base) var(--ease-out);
+  border: 1px solid transparent;
 }
 
-.contact-card:hover {
-  transform: translateX(5px);
+.contact__card:hover {
+  transform: translateX(8px);
   box-shadow: var(--shadow-md);
+  border-color: var(--color-primary-100);
 }
 
-.contact-card__icon {
-  width: 50px;
-  height: 50px;
+.contact__icon {
+  width: 56px;
+  height: 56px;
   background: var(--gradient-primary);
-  border-radius: var(--radius-base);
+  border-radius: var(--radius-lg);
   display: flex;
   align-items: center;
   justify-content: center;
   flex-shrink: 0;
+  transition: transform var(--transition-base) var(--ease-spring);
 }
 
-.contact-card__icon i {
-  font-size: 1.25rem;
+.contact__card:hover .contact__icon {
+  transform: scale(1.1) rotate(-5deg);
+}
+
+.contact__icon i {
+  font-size: 1.5rem;
   color: var(--color-white);
 }
 
-.contact-card__title {
+.contact__data h3 {
   font-size: var(--font-size-base);
-  font-weight: var(--font-weight-semibold);
+  font-weight: var(--font-weight-bold);
   color: var(--color-text-primary);
-  margin-bottom: var(--spacing-xs);
+  margin-bottom: var(--spacing-1);
 }
 
-.contact-card__text {
+.contact__data p {
   font-size: var(--font-size-base);
   color: var(--color-text-muted);
+  margin-bottom: var(--spacing-1);
+}
+
+.contact__data p:last-child {
+  margin-bottom: 0;
+}
+
+/* ==================== CONTENT CARD (Blog) ====================
+   Card para artigos e conteudo
+   Otimizado para escaneamento visual
+*/
+.content__card {
+  background: var(--color-bg-elevated);
+  border-radius: var(--radius-xl);
+  overflow: hidden;
+  box-shadow: var(--shadow-card);
+  transition: all var(--transition-base) var(--ease-out);
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+
+.content__card:hover {
+  transform: translateY(-6px);
+  box-shadow: var(--shadow-card-hover);
+}
+
+.content__image {
+  position: relative;
+  aspect-ratio: 16/10;
+  overflow: hidden;
+}
+
+.content__image-placeholder {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.content__image-placeholder i {
+  font-size: 3rem;
+  opacity: 0.9;
+}
+
+.content__category {
+  position: absolute;
+  top: var(--spacing-4);
+  left: var(--spacing-4);
+  background: var(--color-white);
+  color: var(--color-primary);
+  font-size: var(--font-size-xs);
+  font-weight: var(--font-weight-bold);
+  padding: var(--spacing-1-5) var(--spacing-3);
+  border-radius: var(--radius-full);
+  text-transform: uppercase;
+  letter-spacing: var(--letter-spacing-wide);
+  box-shadow: var(--shadow-md);
+}
+
+.content__info {
+  padding: var(--spacing-6);
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+}
+
+.content__date {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-2);
+  font-size: var(--font-size-sm);
+  color: var(--color-text-muted);
+  margin-bottom: var(--spacing-3);
+}
+
+.content__date i {
+  color: var(--color-primary);
+}
+
+.content__title {
+  font-family: var(--font-family-display);
+  font-size: var(--font-size-lg);
+  font-weight: var(--font-weight-semibold);
+  color: var(--color-text-primary);
+  margin-bottom: var(--spacing-3);
+  line-height: var(--line-height-snug);
+  transition: color var(--transition-base);
+}
+
+.content__card:hover .content__title {
+  color: var(--color-primary);
+}
+
+.content__excerpt {
+  font-size: var(--font-size-base);
+  color: var(--color-text-muted);
+  line-height: var(--line-height-relaxed);
+  margin-bottom: var(--spacing-4);
+  flex: 1;
+}
+
+.content__link {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--spacing-2);
+  font-size: var(--font-size-base);
+  font-weight: var(--font-weight-semibold);
+  color: var(--color-primary);
+  transition: gap var(--transition-base);
+  margin-top: auto;
+}
+
+.content__link:hover {
+  gap: var(--spacing-3);
+}
+
+.content__link i {
+  font-size: var(--font-size-sm);
+  transition: transform var(--transition-base);
+}
+
+.content__link:hover i {
+  transform: translateX(4px);
+}
+
+/* ==================== TESTIMONIAL CARD ====================
+   Card para depoimentos - Social Proof
+   Referencia: Cialdini (2006) - Principio de Prova Social
+*/
+.testimonial__card {
+  background: var(--glass-bg);
+  backdrop-filter: blur(var(--glass-blur));
+  -webkit-backdrop-filter: blur(var(--glass-blur));
+  border: 1px solid var(--glass-border);
+  padding: var(--spacing-8);
+  border-radius: var(--radius-2xl);
+  box-shadow: var(--shadow-card);
+  position: relative;
+  transition: all var(--transition-base) var(--ease-out);
+}
+
+.testimonial__card:hover {
+  transform: translateY(-4px);
+  box-shadow: var(--shadow-lg);
+}
+
+/* Icone de citacao decorativo */
+.testimonial__card::before {
+  content: '\f10d'; /* Font Awesome quote-left */
+  font-family: 'Font Awesome 6 Free';
+  font-weight: 900;
+  position: absolute;
+  top: var(--spacing-6);
+  left: var(--spacing-6);
+  font-size: 2rem;
+  color: var(--color-primary);
+  opacity: 0.15;
+}
+
+.testimonial__quote {
+  font-size: var(--font-size-md);
+  font-style: italic;
+  color: var(--color-text-secondary);
+  line-height: var(--line-height-relaxed);
+  margin-bottom: var(--spacing-6);
+  padding-left: var(--spacing-4);
+  border-left: 3px solid var(--color-primary-200);
+}
+
+.testimonial__author {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-4);
+}
+
+.testimonial__avatar {
+  width: 48px;
+  height: 48px;
+  background: var(--gradient-primary);
+  border-radius: var(--radius-full);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--color-white);
+  font-weight: var(--font-weight-bold);
+  font-size: var(--font-size-lg);
+}
+
+.testimonial__info h4 {
+  font-size: var(--font-size-base);
+  font-weight: var(--font-weight-bold);
+  color: var(--color-primary);
+  margin-bottom: var(--spacing-0-5);
+}
+
+.testimonial__info span {
+  font-size: var(--font-size-sm);
+  color: var(--color-text-muted);
+}
+
+/* ==================== STAT CARD ====================
+   Card para estatisticas - Autoridade
+   Referencia: Cialdini (2006) - Principio de Autoridade
+*/
+.stat-card {
+  background: var(--gradient-primary);
+  border-radius: var(--radius-xl);
+  padding: var(--spacing-6);
+  text-align: center;
+  color: var(--color-white);
+  position: relative;
+  overflow: hidden;
+}
+
+.stat-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.1) 0%, transparent 50%);
+}
+
+.stat-card__number {
+  font-family: var(--font-family-display);
+  font-size: var(--font-size-4xl);
+  font-weight: var(--font-weight-bold);
+  line-height: 1;
+  margin-bottom: var(--spacing-2);
+  position: relative;
+}
+
+.stat-card__label {
+  font-size: var(--font-size-sm);
+  font-weight: var(--font-weight-medium);
+  text-transform: uppercase;
+  letter-spacing: var(--letter-spacing-wide);
+  opacity: 0.9;
+  position: relative;
 }
 
 /* ==================== RESPONSIVE ==================== */
 @media (max-width: 768px) {
-  .specialty-card {
+  .specialty__card {
+    padding: var(--spacing-6);
     backdrop-filter: none;
     -webkit-backdrop-filter: none;
     background-color: var(--color-white);
   }
 
+  .specialty__icon {
+    width: 64px;
+    height: 64px;
+  }
+
+  .specialty__icon i {
+    font-size: 1.5rem;
+  }
+
   .card__content {
-    padding: var(--spacing-md);
+    padding: var(--spacing-5);
+  }
+
+  .contact__card {
+    padding: var(--spacing-5);
+  }
+
+  .contact__icon {
+    width: 48px;
+    height: 48px;
+  }
+
+  .testimonial__card {
+    padding: var(--spacing-6);
+  }
+}
+
+/* ==================== REDUCED MOTION ==================== */
+@media (prefers-reduced-motion: reduce) {
+  .card,
+  .specialty__card,
+  .contact__card,
+  .content__card,
+  .testimonial__card {
+    transition: none;
+  }
+
+  .card:hover,
+  .specialty__card:hover,
+  .contact__card:hover,
+  .content__card:hover {
+    transform: none;
+  }
+
+  .specialty__card:hover .specialty__icon {
+    transform: none;
   }
 }
