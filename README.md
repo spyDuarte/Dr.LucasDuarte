@@ -768,6 +768,20 @@ Descomente e configure no `<head>` do `index.html`:
 
 36. **Spinellis, D.** (2006). *Code Quality: The Open Source Perspective*. Addison-Wesley.
 
+### Psicologia Comportamental e Tomada de Decisao (Redesign 2024)
+
+37. **Kahneman, D.** (2011). *Thinking, Fast and Slow*. Farrar, Straus and Giroux.
+
+38. **Ariely, D.** (2008). *Predictably Irrational: The Hidden Forces That Shape Our Decisions*. Harper Collins.
+
+39. **Krug, S.** (2014). *Don't Make Me Think, Revisited: A Common Sense Approach to Web Usability* (3rd ed.). New Riders.
+
+40. **Weinschenk, S.** (2011). *100 Things Every Designer Needs to Know About People*. New Riders.
+
+41. **Cialdini, R.** (2006). *Influence: The Psychology of Persuasion* (Revised ed.). Harper Business.
+
+42. **Fogg, B.J.** (2003). *Persuasive Technology: Using Computers to Change What We Think and Do*. Morgan Kaufmann.
+
 ---
 
 ## Metricas de Qualidade
@@ -844,6 +858,6 @@ Este projeto esta sob a licenca MIT.
 
 Desenvolvido com dedicacao para promover a medicina humanizada.
 
-**Versao 3.0.0** | Dezembro 2024
+**Versao 3.1.0** | Dezembro 2024
 
-*Design fundamentado em pesquisas cientificas para maximizar usabilidade, acessibilidade e experiencia do usuario.*
+*Design fundamentado em 42 referencias cientificas para maximizar usabilidade, acessibilidade e experiencia do usuario.*
