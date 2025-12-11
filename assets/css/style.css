@@ -242,25 +242,46 @@ select {
 }
 
 /* ==================== BUTTONS ==================== */
+/* Based on: Fitts' Law (1954) - Touch target optimization */
+/* Based on: Von Restorff Effect - Visual prominence for CTAs */
+
 .btn {
     display: inline-flex;
     align-items: center;
     justify-content: center;
     gap: var(--spacing-sm);
-    padding: 0.875rem 1.75rem;
+    padding: 1rem 2rem;
     font-size: 1rem;
     font-weight: 600;
     border-radius: var(--radius-lg);
-    transition: var(--transition);
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
     cursor: pointer;
     position: relative;
     overflow: hidden;
+    min-height: 48px;
+    /* Touch target optimization */
 }
 
 .btn--primary {
-    background: linear-gradient(135deg, var(--primary-color) 0%, var(--primary-light) 100%);
+    background: linear-gradient(135deg, var(--primary-color) 0%, var(--primary-light) 50%, var(--secondary-color) 100%);
+    background-size: 200% 200%;
     color: var(--white);
-    box-shadow: 0 8px 30px rgba(15, 76, 117, 0.35);
+    box-shadow:
+        0 4px 15px rgba(15, 76, 117, 0.3),
+        0 8px 30px rgba(15, 76, 117, 0.2);
+    animation: gradientShift 3s ease infinite;
+}
+
+@keyframes gradientShift {
+
+    0%,
+    100% {
+        background-position: 0% 50%;
+    }
+
+    50% {
+        background-position: 100% 50%;
+    }
 }
 
 .btn--primary::before {
@@ -270,21 +291,68 @@ select {
     left: -100%;
     width: 100%;
     height: 100%;
-    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
-    transition: left 0.5s ease;
+    background: linear-gradient(90deg,
+            transparent,
+            rgba(255, 255, 255, 0.3),
+            transparent);
+    animation: shimmerContinuous 2.5s ease-in-out infinite;
 }
 
-.btn--primary:hover::before {
-    left: 100%;
+@keyframes shimmerContinuous {
+    0% {
+        left: -100%;
+    }
+
+    50%,
+    100% {
+        left: 100%;
+    }
 }
 
 .btn--primary:hover {
-    transform: translateY(-3px);
-    box-shadow: 0 12px 40px rgba(15, 76, 117, 0.45);
+    transform: translateY(-4px) scale(1.02);
+    box-shadow:
+        0 8px 25px rgba(15, 76, 117, 0.4),
+        0 16px 50px rgba(15, 76, 117, 0.25),
+        0 0 30px rgba(15, 76, 117, 0.15);
 }
 
 .btn--primary:active {
-    transform: translateY(-1px);
+    transform: translateY(-2px) scale(1.01);
+}
+
+/* Gold Accent CTA - For highest priority actions */
+.btn--gold {
+    background: linear-gradient(135deg, var(--gold-accent) 0%, #e6c87a 50%, var(--gold-accent) 100%);
+    background-size: 200% 200%;
+    color: var(--primary-dark);
+    box-shadow:
+        0 4px 15px rgba(212, 175, 55, 0.35),
+        0 8px 30px rgba(212, 175, 55, 0.2);
+    animation: gradientShift 3s ease infinite;
+    font-weight: 700;
+}
+
+.btn--gold::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg,
+            transparent,
+            rgba(255, 255, 255, 0.4),
+            transparent);
+    animation: shimmerContinuous 2s ease-in-out infinite;
+}
+
+.btn--gold:hover {
+    transform: translateY(-4px) scale(1.02);
+    box-shadow:
+        0 8px 25px rgba(212, 175, 55, 0.5),
+        0 16px 50px rgba(212, 175, 55, 0.3),
+        0 0 40px rgba(212, 175, 55, 0.2);
 }
 
 .btn--outline {
@@ -297,7 +365,7 @@ select {
 .btn--outline:hover {
     background: var(--primary-color);
     color: var(--white);
-    transform: translateY(-2px);
+    transform: translateY(-3px);
     box-shadow: 0 8px 25px rgba(15, 76, 117, 0.3);
 }
 
@@ -306,8 +374,14 @@ select {
 }
 
 .btn--sm {
-    padding: 0.625rem 1.25rem;
+    padding: 0.75rem 1.5rem;
     font-size: 0.875rem;
+    min-height: 44px;
+}
+
+.btn--lg {
+    padding: 1.25rem 2.5rem;
+    font-size: 1.125rem;
 }
 
 /* ==================== HEADER ==================== */
@@ -469,6 +543,7 @@ select {
     color: var(--text-secondary);
     margin-bottom: var(--spacing-xl);
     max-width: 500px;
+    line-height: 1.7;
 }
 
 .hero__buttons {
@@ -477,26 +552,68 @@ select {
     margin-bottom: var(--spacing-2xl);
 }
 
+/* Enhanced Stats Section - Social Proof */
+/* Based on: Cialdini (2006) - Social Proof Principle */
 .hero__stats {
     display: flex;
-    gap: var(--spacing-2xl);
+    gap: 0;
+    background: rgba(255, 255, 255, 0.8);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    padding: var(--spacing-lg) var(--spacing-xl);
+    border-radius: var(--radius-xl);
+    box-shadow: var(--shadow-md);
+    border: 1px solid rgba(15, 76, 117, 0.08);
 }
 
 .stat {
     text-align: center;
+    padding: 0 var(--spacing-xl);
+    position: relative;
+}
+
+.stat:not(:last-child)::after {
+    content: '';
+    position: absolute;
+    right: 0;
+    top: 50%;
+    transform: translateY(-50%);
+    height: 40px;
+    width: 1px;
+    background: linear-gradient(180deg, transparent, var(--gray-300), transparent);
+}
+
+.stat__icon {
+    width: 40px;
+    height: 40px;
+    background: linear-gradient(135deg, rgba(15, 76, 117, 0.1) 0%, rgba(14, 131, 136, 0.1) 100%);
+    border-radius: var(--radius-full);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto var(--spacing-sm);
+}
+
+.stat__icon i {
+    font-size: 1rem;
+    color: var(--primary-color);
 }
 
 .stat__number {
     display: block;
     font-family: var(--font-display);
-    font-size: 2rem;
+    font-size: 1.75rem;
     font-weight: 700;
     color: var(--primary-color);
+    line-height: 1.2;
 }
 
 .stat__text {
-    font-size: 0.875rem;
+    font-size: 0.8125rem;
     color: var(--text-muted);
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
 }
 
 .hero__image {
@@ -511,10 +628,12 @@ select {
     animation: gentleFloat 6s ease-in-out infinite;
 }
 
+/* Premium Hero Image Placeholder */
+/* Professional design while awaiting actual photo */
 .hero__image-placeholder {
     width: 100%;
     height: 100%;
-    background: linear-gradient(135deg, var(--primary-color) 0%, var(--secondary-color) 100%);
+    background: linear-gradient(135deg, var(--primary-color) 0%, var(--primary-dark) 50%, var(--secondary-color) 100%);
     border-radius: var(--radius-xl);
     display: flex;
     flex-direction: column;
@@ -523,25 +642,127 @@ select {
     color: var(--white);
     box-shadow:
         var(--shadow-2xl),
-        0 0 60px rgba(15, 76, 117, 0.2);
+        0 0 60px rgba(15, 76, 117, 0.25),
+        inset 0 0 100px rgba(255, 255, 255, 0.05);
     transition: var(--transition);
+    position: relative;
+    overflow: hidden;
+}
+
+/* Medical cross pattern overlay */
+.hero__image-placeholder::before {
+    content: '+';
+    position: absolute;
+    top: 15%;
+    right: 15%;
+    font-size: 3rem;
+    font-weight: 100;
+    color: rgba(255, 255, 255, 0.08);
+    transform: rotate(15deg);
+}
+
+.hero__image-placeholder::after {
+    content: '';
+    position: absolute;
+    bottom: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: radial-gradient(circle, rgba(212, 175, 55, 0.08) 0%, transparent 50%);
+    animation: pulseRing 4s ease-in-out infinite;
+}
+
+@keyframes pulseRing {
+
+    0%,
+    100% {
+        transform: scale(0.8);
+        opacity: 0.5;
+    }
+
+    50% {
+        transform: scale(1);
+        opacity: 1;
+    }
 }
 
 .hero__image-placeholder:hover {
     box-shadow:
         var(--shadow-2xl),
-        0 0 80px rgba(15, 76, 117, 0.3);
+        0 0 100px rgba(15, 76, 117, 0.35),
+        inset 0 0 100px rgba(255, 255, 255, 0.08);
 }
 
 .hero__image-placeholder i {
     font-size: 5rem;
     margin-bottom: var(--spacing-md);
-    opacity: 0.9;
+    opacity: 0.95;
+    position: relative;
+    z-index: 1;
+    text-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
 }
 
 .hero__image-placeholder span {
-    font-size: 1rem;
-    opacity: 0.8;
+    font-size: 0.9375rem;
+    opacity: 0.7;
+    font-weight: 500;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    position: relative;
+    z-index: 1;
+}
+
+/* Hero Photo (Real Image) */
+.hero__image-photo {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center top;
+    border-radius: var(--radius-xl);
+    box-shadow:
+        var(--shadow-2xl),
+        0 0 60px rgba(15, 76, 117, 0.25);
+    transition: var(--transition);
+}
+
+.hero__image-photo:hover {
+    box-shadow:
+        var(--shadow-2xl),
+        0 0 100px rgba(15, 76, 117, 0.35);
+    transform: scale(1.02);
+}
+
+/* Urgency Badge for CTAs */
+.btn--urgent {
+    position: relative;
+}
+
+.btn--urgent::after {
+    content: 'Vagas Limitadas';
+    position: absolute;
+    top: -10px;
+    right: -10px;
+    background: linear-gradient(135deg, #ef4444 0%, #dc2626 100%);
+    color: white;
+    font-size: 0.625rem;
+    font-weight: 700;
+    padding: 3px 8px;
+    border-radius: var(--radius-full);
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    animation: urgencyPulse 2s ease-in-out infinite;
+}
+
+@keyframes urgencyPulse {
+
+    0%,
+    100% {
+        transform: scale(1);
+    }
+
+    50% {
+        transform: scale(1.1);
+    }
 }
 
 .hero__badge {
@@ -1931,28 +2152,67 @@ select {
 }
 
 /* ==================== FLOATING BUTTONS ==================== */
+/* Based on: Fogg Behavior Model (B=MAT) - Trigger visibility */
 .whatsapp-float {
     position: fixed;
     bottom: 100px;
     right: 30px;
     width: 60px;
     height: 60px;
-    background: #25d366;
+    background: linear-gradient(135deg, #25d366 0%, #128c7e 100%);
     border-radius: var(--radius-full);
     display: flex;
     align-items: center;
     justify-content: center;
     color: var(--white);
     font-size: 1.75rem;
-    box-shadow: var(--shadow-lg);
+    box-shadow:
+        var(--shadow-lg),
+        0 0 20px rgba(37, 211, 102, 0.3);
     z-index: 999;
-    transition: var(--transition);
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
     animation: pulse 2s infinite;
 }
 
 .whatsapp-float:hover {
     transform: scale(1.1);
-    box-shadow: var(--shadow-xl);
+    box-shadow:
+        var(--shadow-xl),
+        0 0 40px rgba(37, 211, 102, 0.5);
+}
+
+/* WhatsApp Tooltip */
+.whatsapp-tooltip {
+    position: absolute;
+    right: 70px;
+    background: var(--white);
+    color: var(--text-primary);
+    padding: var(--spacing-sm) var(--spacing-md);
+    border-radius: var(--radius);
+    font-size: 0.875rem;
+    font-weight: 600;
+    white-space: nowrap;
+    box-shadow: var(--shadow-md);
+    opacity: 0;
+    visibility: hidden;
+    transform: translateX(10px);
+    transition: all 0.3s ease;
+}
+
+.whatsapp-tooltip::after {
+    content: '';
+    position: absolute;
+    right: -6px;
+    top: 50%;
+    transform: translateY(-50%);
+    border: 6px solid transparent;
+    border-left-color: var(--white);
+}
+
+.whatsapp-float:hover .whatsapp-tooltip {
+    opacity: 1;
+    visibility: visible;
+    transform: translateX(0);
 }
 
 @keyframes pulse {
