@@ -1,223 +1,529 @@
 /* =====================================================
-   HERO SECTION
-   Metodologia: Above the Fold Optimization
-   Referencia: Nielsen Norman Group - "F-Shaped Pattern"
+   HERO SECTION v4.0 - Scientific Layout Design
+   =====================================================
+   Otimizado para padroes de escaneamento visual (F/Z-Pattern)
+
+   REFERENCIAS CIENTIFICAS:
+   - Nielsen, J. (2006). "F-Shaped Pattern For Reading Web Content"
+   - Pernice, K. (2017). "F-Shaped Pattern of Reading on the Web"
+   - Rayner, K. (1998). "Eye movements in reading and information processing"
+   - Itti, L. & Koch, C. (2001). "Computational modelling of visual attention"
    ===================================================== */
 
 /* ==================== HERO SECTION ==================== */
 .hero {
   min-height: 100vh;
+  min-height: 100dvh; /* Dynamic viewport height for mobile */
   display: flex;
   align-items: center;
   padding-top: var(--header-height);
-  background: radial-gradient(circle at 100% 0%, #f0f9ff 0%, #ffffff 50%, #f8fafc 100%);
+  padding-bottom: var(--spacing-12);
+  background: var(--gradient-hero-bg);
   position: relative;
   overflow: hidden;
+  isolation: isolate; /* Create stacking context */
 }
 
-/* Background Decorations */
+/* ==================== BACKGROUND DECORATIONS ====================
+   Formas organicas transmitem calma e acolhimento (contexto medico)
+   Referencia: Bar & Neta (2006) - "Humans prefer curved visual objects"
+*/
 .hero::before {
   content: '';
   position: absolute;
-  top: -10%;
-  right: -5%;
-  width: 600px;
-  height: 600px;
-  background: radial-gradient(circle, rgba(12, 74, 110, 0.03) 0%, transparent 70%);
+  top: -15%;
+  right: -10%;
+  width: 700px;
+  height: 700px;
+  background: radial-gradient(circle, rgba(12, 74, 110, 0.04) 0%, transparent 70%);
   border-radius: 50%;
-  z-index: 0;
+  z-index: -1;
+  animation: float-slow 20s ease-in-out infinite;
 }
 
 .hero::after {
   content: '';
   position: absolute;
-  bottom: 10%;
-  left: -10%;
-  width: 500px;
-  height: 500px;
-  background: radial-gradient(circle, rgba(8, 145, 178, 0.03) 0%, transparent 70%);
+  bottom: 5%;
+  left: -15%;
+  width: 600px;
+  height: 600px;
+  background: radial-gradient(circle, rgba(8, 145, 178, 0.04) 0%, transparent 70%);
   border-radius: 50%;
-  z-index: 0;
+  z-index: -1;
+  animation: float-slow 25s ease-in-out infinite reverse;
 }
 
-/* ==================== HERO CONTAINER ==================== */
+/* Elemento decorativo adicional */
+.hero__decoration {
+  position: absolute;
+  top: 50%;
+  right: 5%;
+  width: 400px;
+  height: 400px;
+  background: radial-gradient(circle, rgba(16, 185, 129, 0.03) 0%, transparent 60%);
+  border-radius: 50%;
+  z-index: -1;
+  transform: translateY(-50%);
+}
+
+/* ==================== HERO CONTAINER ====================
+   Layout otimizado para Z-Pattern (Landing pages)
+   Olho varre: Top-left -> Top-right -> Diagonal -> Bottom-right
+*/
 .hero__container {
   display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: var(--spacing-3xl);
+  grid-template-columns: 1.1fr 0.9fr;
+  gap: var(--spacing-16);
   align-items: center;
   position: relative;
   z-index: 1;
 }
 
-/* ==================== HERO CONTENT ==================== */
+/* ==================== HERO CONTENT (LEFT - Primary Attention Zone) ====================
+   Posicionado no canto superior esquerdo (zona de atencao primaria)
+   Referencia: F-Pattern - Nielsen Norman Group
+*/
 .hero__content {
-  /* Text content side */
+  max-width: 600px;
 }
 
+/* Subtitulo com badge de destaque */
 .hero__subtitle {
-  display: inline-block;
+  display: inline-flex;
+  align-items: center;
+  gap: var(--spacing-2);
   font-size: var(--font-size-sm);
   font-weight: var(--font-weight-semibold);
   color: var(--color-primary);
   text-transform: uppercase;
   letter-spacing: var(--letter-spacing-widest);
-  margin-bottom: var(--spacing-md);
-  padding: var(--spacing-xs) var(--spacing-md);
-  background-color: rgba(37, 99, 235, 0.1);
+  margin-bottom: var(--spacing-6);
+  padding: var(--spacing-2) var(--spacing-4);
+  background: linear-gradient(135deg, rgba(12, 74, 110, 0.08) 0%, rgba(8, 145, 178, 0.08) 100%);
   border-radius: var(--radius-full);
+  border: 1px solid rgba(12, 74, 110, 0.1);
 }
 
+.hero__subtitle::before {
+  content: '';
+  width: 8px;
+  height: 8px;
+  background: var(--gradient-primary);
+  border-radius: var(--radius-full);
+  animation: pulse-dot 2s ease-in-out infinite;
+}
+
+/* Titulo Principal - Maior peso visual
+   Referencia: Visual Saliency - Itti & Koch (2001)
+*/
 .hero__title {
   font-family: var(--font-family-display);
-  font-size: var(--font-size-5xl);
+  font-size: clamp(var(--font-size-3xl), 5vw, var(--font-size-5xl));
   font-weight: var(--font-weight-bold);
   line-height: var(--line-height-tight);
   color: var(--color-text-primary);
-  margin-bottom: var(--spacing-lg);
+  margin-bottom: var(--spacing-6);
+  letter-spacing: var(--letter-spacing-tight);
 }
 
 .hero__title .highlight {
   color: var(--color-primary);
+  position: relative;
+  display: inline-block;
 }
 
+.hero__title .highlight::after {
+  content: '';
+  position: absolute;
+  bottom: 0.1em;
+  left: 0;
+  width: 100%;
+  height: 0.15em;
+  background: linear-gradient(90deg, var(--color-primary-300), var(--color-secondary-300));
+  opacity: 0.4;
+  border-radius: var(--radius-full);
+  z-index: -1;
+}
+
+/* Descricao - Otimizada para legibilidade
+   Referencia: Bringhurst (2012) - 45-75 caracteres por linha
+*/
 .hero__description {
-  font-size: var(--font-size-md);
+  font-size: var(--font-size-lg);
   color: var(--color-text-secondary);
-  margin-bottom: var(--spacing-xl);
-  max-width: 500px;
+  margin-bottom: var(--spacing-8);
+  max-width: 52ch; /* Otimizado para legibilidade */
   line-height: var(--line-height-relaxed);
 }
 
-/* ==================== HERO BUTTONS ==================== */
-.hero__buttons {
-  display: flex;
-  gap: var(--spacing-md);
-  margin-bottom: var(--spacing-2xl);
+.hero__description strong {
+  color: var(--color-text-primary);
+  font-weight: var(--font-weight-semibold);
 }
 
-/* ==================== HERO STATS ==================== */
+/* ==================== HERO BUTTONS (CTA Zone) ====================
+   Posicionados estrategicamente para conversao
+   Referencia: Von Restorff Effect + Fitts' Law
+*/
+.hero__buttons {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--spacing-4);
+  margin-bottom: var(--spacing-12);
+}
+
+/* Botao primario com destaque visual */
+.hero__buttons .btn--primary {
+  min-width: 220px;
+  padding: var(--spacing-4) var(--spacing-8);
+  font-size: var(--font-size-md);
+  box-shadow: var(--shadow-primary);
+  transition: all var(--transition-base) var(--ease-spring);
+}
+
+.hero__buttons .btn--primary:hover {
+  transform: translateY(-3px) scale(1.02);
+  box-shadow: var(--shadow-primary-lg);
+}
+
+.hero__buttons .btn--outline {
+  min-width: 180px;
+  padding: var(--spacing-4) var(--spacing-6);
+  font-size: var(--font-size-md);
+}
+
+/* ==================== HERO STATS ====================
+   Social Proof - Principio de Cialdini
+   Numeros transmitem autoridade e confianca
+*/
 .hero__stats {
   display: flex;
-  gap: var(--spacing-2xl);
+  gap: var(--spacing-10);
+  padding-top: var(--spacing-8);
+  border-top: 1px solid var(--color-gray-200);
 }
 
 .stat {
-  text-align: center;
+  text-align: left;
+  position: relative;
+}
+
+.stat::after {
+  content: '';
+  position: absolute;
+  right: calc(-1 * var(--spacing-5));
+  top: 50%;
+  transform: translateY(-50%);
+  width: 1px;
+  height: 40px;
+  background: var(--color-gray-200);
+}
+
+.stat:last-child::after {
+  display: none;
 }
 
 .stat__number {
   display: block;
   font-family: var(--font-family-display);
-  font-size: var(--font-size-2xl);
+  font-size: var(--font-size-3xl);
   font-weight: var(--font-weight-bold);
   color: var(--color-primary);
+  line-height: 1;
+  margin-bottom: var(--spacing-1);
+  background: var(--gradient-primary);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
 }
 
 .stat__text {
   font-size: var(--font-size-sm);
+  font-weight: var(--font-weight-medium);
   color: var(--color-text-muted);
+  text-transform: uppercase;
+  letter-spacing: var(--letter-spacing-wide);
 }
 
-/* ==================== HERO IMAGE ==================== */
+/* ==================== HERO IMAGE ====================
+   Lado direito - Zona secundaria de atencao
+   Imagem humaniza e cria conexao emocional
+   Referencia: Norman (2004) - Emotional Design
+*/
 .hero__image {
   display: flex;
   justify-content: center;
+  align-items: center;
 }
 
 .hero__image-wrapper {
   position: relative;
-  width: 400px;
-  height: 500px;
+  width: 100%;
+  max-width: 450px;
+  aspect-ratio: 4/5;
 }
 
 .hero__image-placeholder {
   width: 100%;
   height: 100%;
   background: var(--gradient-primary);
-  border-radius: var(--radius-xl);
+  border-radius: var(--radius-3xl);
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
   color: var(--color-white);
-  box-shadow: var(--shadow-2xl);
+  box-shadow: var(--shadow-2xl), var(--shadow-primary-lg);
+  position: relative;
+  overflow: hidden;
+}
+
+/* Efeito de brilho sutil */
+.hero__image-placeholder::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.15) 0%, transparent 50%, rgba(0, 0, 0, 0.05) 100%);
+  z-index: 1;
+}
+
+.hero__image-placeholder::after {
+  content: '';
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: linear-gradient(
+    45deg,
+    transparent 40%,
+    rgba(255, 255, 255, 0.1) 50%,
+    transparent 60%
+  );
+  animation: shine 8s ease-in-out infinite;
 }
 
 .hero__image-placeholder i {
-  font-size: 5rem;
-  margin-bottom: var(--spacing-md);
+  font-size: 6rem;
+  margin-bottom: var(--spacing-4);
   opacity: 0.9;
+  position: relative;
+  z-index: 2;
 }
 
 .hero__image-placeholder span {
   font-size: var(--font-size-base);
+  font-weight: var(--font-weight-medium);
   opacity: 0.8;
+  position: relative;
+  z-index: 2;
 }
 
-/* Badge */
+/* Badge de Credencial - Trust Indicator
+   Referencia: Fogg (2003) - Persuasive Technology
+*/
 .hero__badge {
   position: absolute;
-  bottom: 30px;
-  left: -30px;
+  bottom: var(--spacing-8);
+  left: calc(-1 * var(--spacing-8));
   background-color: var(--color-white);
-  padding: var(--spacing-md) var(--spacing-lg);
-  border-radius: var(--radius-lg);
-  box-shadow: var(--shadow-lg);
+  padding: var(--spacing-4) var(--spacing-6);
+  border-radius: var(--radius-xl);
+  box-shadow: var(--shadow-lg), 0 0 0 1px rgba(0, 0, 0, 0.03);
   display: flex;
   align-items: center;
-  gap: var(--spacing-sm);
+  gap: var(--spacing-3);
+  animation: float 4s ease-in-out infinite;
 }
 
 .hero__badge i {
-  color: var(--color-medical-green);
-  font-size: 1.5rem;
+  width: 44px;
+  height: 44px;
+  background: linear-gradient(135deg, var(--color-accent-100) 0%, var(--color-accent-200) 100%);
+  border-radius: var(--radius-full);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--color-accent-600);
+  font-size: 1.25rem;
 }
 
 .hero__badge span {
-  font-weight: var(--font-weight-semibold);
+  font-weight: var(--font-weight-bold);
+  font-size: var(--font-size-base);
   color: var(--color-text-primary);
 }
 
-/* ==================== SCROLL INDICATOR ==================== */
+/* Badge secundario no topo direito */
+.hero__badge--secondary {
+  position: absolute;
+  top: var(--spacing-8);
+  right: calc(-1 * var(--spacing-6));
+  background: var(--color-white);
+  padding: var(--spacing-3) var(--spacing-5);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-md);
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-2);
+  animation: float 5s ease-in-out infinite reverse;
+}
+
+.hero__badge--secondary i {
+  color: var(--color-gold);
+  font-size: 1rem;
+}
+
+.hero__badge--secondary span {
+  font-size: var(--font-size-sm);
+  font-weight: var(--font-weight-semibold);
+  color: var(--color-text-secondary);
+}
+
+/* ==================== SCROLL INDICATOR ====================
+   Affordance visual para indicar acao
+   Referencia: Norman (1988) - The Design of Everyday Things
+*/
 .hero__scroll {
   position: absolute;
-  bottom: var(--spacing-xl);
+  bottom: var(--spacing-8);
   left: 50%;
   transform: translateX(-50%);
 }
 
 .scroll-down {
   display: flex;
+  flex-direction: column;
   align-items: center;
-  justify-content: center;
-  width: 40px;
-  height: 40px;
-  border: 2px solid var(--color-gray-300);
-  border-radius: var(--radius-full);
+  gap: var(--spacing-2);
   color: var(--color-text-muted);
-  animation: bounce 2s infinite;
+  font-size: var(--font-size-xs);
+  font-weight: var(--font-weight-medium);
+  text-transform: uppercase;
+  letter-spacing: var(--letter-spacing-widest);
+  opacity: 0.7;
+  transition: opacity var(--transition-base);
 }
 
-/* ==================== RESPONSIVE ==================== */
+.scroll-down:hover {
+  opacity: 1;
+}
+
+.scroll-down__icon {
+  width: 32px;
+  height: 48px;
+  border: 2px solid currentColor;
+  border-radius: var(--radius-full);
+  position: relative;
+  opacity: 0.5;
+}
+
+.scroll-down__icon::before {
+  content: '';
+  position: absolute;
+  top: 8px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 4px;
+  height: 8px;
+  background: currentColor;
+  border-radius: var(--radius-full);
+  animation: scroll-indicator 2s ease-in-out infinite;
+}
+
+/* ==================== ANIMATIONS ==================== */
+@keyframes float-slow {
+  0%, 100% {
+    transform: translate(0, 0);
+  }
+  50% {
+    transform: translate(-20px, 30px);
+  }
+}
+
+@keyframes float {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+}
+
+@keyframes pulse-dot {
+  0%, 100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 0.5;
+    transform: scale(0.8);
+  }
+}
+
+@keyframes shine {
+  0% {
+    transform: translateX(-100%) translateY(-100%) rotate(45deg);
+  }
+  100% {
+    transform: translateX(100%) translateY(100%) rotate(45deg);
+  }
+}
+
+@keyframes scroll-indicator {
+  0%, 100% {
+    transform: translateX(-50%) translateY(0);
+    opacity: 1;
+  }
+  50% {
+    transform: translateX(-50%) translateY(16px);
+    opacity: 0;
+  }
+}
+
+@keyframes bounce {
+  0%, 20%, 50%, 80%, 100% {
+    transform: translateY(0);
+  }
+  40% {
+    transform: translateY(-10px);
+  }
+  60% {
+    transform: translateY(-5px);
+  }
+}
+
+/* ==================== RESPONSIVE - TABLET ==================== */
 @media (max-width: 1024px) {
+  .hero {
+    padding-top: calc(var(--header-height) + var(--spacing-8));
+    padding-bottom: var(--spacing-16);
+  }
+
   .hero__container {
     grid-template-columns: 1fr;
+    gap: var(--spacing-12);
     text-align: center;
   }
 
   .hero__content {
+    max-width: 600px;
+    margin: 0 auto;
     order: 1;
   }
 
   .hero__image {
     order: 0;
-    margin-bottom: var(--spacing-xl);
+    margin-bottom: var(--spacing-4);
   }
 
   .hero__image-wrapper {
-    width: 300px;
-    height: 380px;
+    max-width: 350px;
+    margin: 0 auto;
   }
 
   .hero__description {
@@ -232,35 +538,71 @@
   .hero__stats {
     justify-content: center;
   }
-}
 
-@media (max-width: 768px) {
-  .hero::before,
-  .hero::after {
+  .stat {
+    text-align: center;
+  }
+
+  .stat::after {
     display: none;
   }
 
+  .hero__badge {
+    left: auto;
+    right: var(--spacing-4);
+    bottom: var(--spacing-4);
+  }
+
+  .hero__badge--secondary {
+    right: auto;
+    left: var(--spacing-4);
+    top: var(--spacing-4);
+  }
+}
+
+/* ==================== RESPONSIVE - MOBILE ==================== */
+@media (max-width: 768px) {
   .hero {
     min-height: auto;
-    padding: calc(var(--header-height) + 2rem) 0 var(--spacing-2xl);
+    padding: calc(var(--header-height) + var(--spacing-6)) 0 var(--spacing-12);
+  }
+
+  .hero::before,
+  .hero::after {
+    display: none;
   }
 
   .hero__title {
     font-size: var(--font-size-3xl);
   }
 
+  .hero__description {
+    font-size: var(--font-size-md);
+  }
+
   .hero__buttons {
     flex-direction: column;
+    gap: var(--spacing-3);
+  }
+
+  .hero__buttons .btn {
+    width: 100%;
+    justify-content: center;
   }
 
   .hero__stats {
     flex-wrap: wrap;
-    gap: var(--spacing-xl);
+    gap: var(--spacing-8);
+    justify-content: center;
   }
 
-  .hero__badge {
-    left: 0;
-    bottom: -10px;
+  .stat__number {
+    font-size: var(--font-size-2xl);
+  }
+
+  .hero__badge,
+  .hero__badge--secondary {
+    display: none;
   }
 
   .hero__scroll {
@@ -268,17 +610,38 @@
   }
 }
 
+/* ==================== RESPONSIVE - SMALL MOBILE ==================== */
 @media (max-width: 480px) {
   .hero__image-wrapper {
-    width: 250px;
-    height: 320px;
+    max-width: 280px;
   }
 
   .hero__title {
     font-size: var(--font-size-2xl);
   }
 
+  .hero__subtitle {
+    font-size: var(--font-size-xs);
+    padding: var(--spacing-1-5) var(--spacing-3);
+  }
+
   .stat__number {
     font-size: var(--font-size-xl);
+  }
+
+  .stat__text {
+    font-size: var(--font-size-xs);
+  }
+}
+
+/* ==================== REDUCED MOTION ==================== */
+@media (prefers-reduced-motion: reduce) {
+  .hero::before,
+  .hero::after,
+  .hero__badge,
+  .hero__badge--secondary,
+  .scroll-down__icon::before,
+  .hero__image-placeholder::after {
+    animation: none;
   }
 }
