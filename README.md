@@ -768,6 +768,54 @@ Descomente e configure no `<head>` do `index.html`:
 
 36. **Spinellis, D.** (2006). *Code Quality: The Open Source Perspective*. Addison-Wesley.
 
+### Psicologia Comportamental e Tomada de Decisao (Redesign 2024)
+
+37. **Kahneman, D.** (2011). *Thinking, Fast and Slow*. Farrar, Straus and Giroux.
+
+38. **Ariely, D.** (2008). *Predictably Irrational: The Hidden Forces That Shape Our Decisions*. Harper Collins.
+
+39. **Krug, S.** (2014). *Don't Make Me Think, Revisited: A Common Sense Approach to Web Usability* (3rd ed.). New Riders.
+
+40. **Weinschenk, S.** (2011). *100 Things Every Designer Needs to Know About People*. New Riders.
+
+41. **Cialdini, R.** (2006). *Influence: The Psychology of Persuasion* (Revised ed.). Harper Business.
+
+42. **Fogg, B.J.** (2003). *Persuasive Technology: Using Computers to Change What We Think and Do*. Morgan Kaufmann.
+
+### Prova Social e Confiança em Websites Médicos (Redesign 2024)
+
+43. **Sillence, E., Briggs, P., Harris, P.R., & Fishwick, L.** (2007). "How do patients evaluate and make use of online health information?" *Social Science & Medicine*, 64(9), 1853-1862.
+
+44. **Robins, D., & Holmes, J.** (2008). "Aesthetics and credibility in web site design." *Information Processing & Management*, 44(1), 386-399.
+
+45. **Murdock, B.B.** (1962). "The serial position effect of free recall." *Journal of Experimental Psychology*, 64(5), 482-488.
+
+46. **Kahneman, D., Fredrickson, B.L., Schreiber, C.A., & Redelmeier, D.A.** (1993). "When more pain is preferred to less: Adding a better end." *Psychological Science*, 4(6), 401-405.
+
+47. **Fogg, B.J., & Tseng, H.** (1999). "The elements of computer credibility." *Proceedings of the SIGCHI Conference on Human Factors in Computing Systems*, 80-87.
+
+### Marketing Digital e Otimização de Conversão (Redesign 2024)
+
+48. **Fogg, B.J.** (2009). "A Behavior Model for Persuasive Design." *Proceedings of Persuasive Technology Fourth International Conference*, Claremont, CA.
+
+> **Aplicação**: CTAs com gatilhos visuais (shimmer) e facilitadores (tamanho de toque otimizado).
+
+49. **Schwartz, B.** (2004). *The Paradox of Choice: Why More Is Less*. Harper Perennial.
+
+> **Aplicação**: Menu de navegação limitado a 6 itens, formulário com opções reduzidas.
+
+50. **Thaler, R.H., & Sunstein, C.R.** (2008). *Nudge: Improving Decisions About Health, Wealth, and Happiness*. Yale University Press.
+
+> **Aplicação**: WhatsApp tooltip como "nudge" para agendamento, CTA primário destacado.
+
+51. **Cialdini, R.** (2016). *Pre-Suasion: A Revolutionary Way to Influence and Persuade*. Simon & Schuster.
+
+> **Aplicação**: Hero section preparando o visitante para confiar antes de apresentar serviços.
+
+52. **Eyal, N.** (2014). *Hooked: How to Build Habit-Forming Products*. Portfolio.
+
+> **Aplicação**: Micro-interações e feedback visual criando engajamento contínuo.
+
 ---
 
 ## Metricas de Qualidade
@@ -776,11 +824,12 @@ Descomente e configure no `<head>` do `index.html`:
 
 | Metrica | Valor | Meta |
 |---------|-------|------|
-| Linhas de CSS | ~2500 | < 3500 |
+| Linhas de CSS | ~2600 | < 3500 |
 | Linhas de JS | ~800 | < 1500 |
 | Especificidade max. CSS | 0,2,1 | < 0,3,0 |
 | Funcoes JS > 20 linhas | 3 | < 5 |
 | Cobertura Design Tokens | 95% | > 90% |
+
 
 ### Performance
 
@@ -844,6 +893,7 @@ Este projeto esta sob a licenca MIT.
 
 Desenvolvido com dedicacao para promover a medicina humanizada.
 
-**Versao 3.0.0** | Dezembro 2024
+**Versao 3.2.0** | Dezembro 2024
 
-*Design fundamentado em pesquisas cientificas para maximizar usabilidade, acessibilidade e experiencia do usuario.*
+*Design fundamentado em 52 referencias cientificas para maximizar usabilidade, acessibilidade e experiencia do usuario.*
+

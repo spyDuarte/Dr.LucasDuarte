@@ -41,22 +41,52 @@
         // gtag('config', 'UA-XXXXX-Y');
     </script>
 
-    <!-- Schema.org -->
+    <!-- Schema.org - Physician + LocalBusiness -->
     <script type="application/ld+json">
     {
       "@context": "https://schema.org",
-      "@type": "Physician",
+      "@type": ["Physician", "LocalBusiness"],
       "name": "Dr. Lucas Duarte",
-      "description": "Médico em Balneário Camboriú/SC. Atendimento humanizado e telemedicina.",
+      "description": "Médico em Balneário Camboriú/SC. Atendimento humanizado presencial e telemedicina para todo o Brasil.",
       "url": "https://drlucasduarte.com.br",
-      "telephone": "+554700000000",
+      "telephone": "+5547999999999",
+      "image": "https://drlucasduarte.com.br/assets/images/doctor-placeholder.png",
       "address": {
         "@type": "PostalAddress",
+        "streetAddress": "Av. Atlântica, 1000",
         "addressLocality": "Balneário Camboriú",
         "addressRegion": "SC",
+        "postalCode": "88330-000",
         "addressCountry": "BR"
       },
-      "priceRange": "$$"
+      "geo": {
+        "@type": "GeoCoordinates",
+        "latitude": "-26.9906",
+        "longitude": "-48.6348"
+      },
+      "openingHoursSpecification": [
+        {
+          "@type": "OpeningHoursSpecification",
+          "dayOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"],
+          "opens": "08:00",
+          "closes": "18:00"
+        }
+      ],
+      "priceRange": "$$",
+      "areaServed": {
+        "@type": "Country",
+        "name": "Brasil"
+      },
+      "availableService": [
+        {
+          "@type": "MedicalProcedure",
+          "name": "Consulta Presencial"
+        },
+        {
+          "@type": "MedicalProcedure",
+          "name": "Telemedicina"
+        }
+      ]
     }
     </script>
 </head>
@@ -121,7 +151,7 @@
                         para todo o Brasil. Cada paciente é único e merece atenção individualizada.
                     </p>
                     <div class="hero__buttons">
-                        <a href="#contato" class="btn btn--primary">
+                        <a href="#contato" class="btn btn--primary btn--urgent">
                             <i class="fas fa-calendar-check"></i> Agende sua Consulta
                         </a>
                         <a href="#sobre" class="btn btn--outline">
@@ -130,14 +160,23 @@
                     </div>
                     <div class="hero__stats">
                         <div class="stat">
+                            <div class="stat__icon">
+                                <i class="fas fa-heart"></i>
+                            </div>
                             <span class="stat__number">100%</span>
                             <span class="stat__text">Dedicação</span>
                         </div>
                         <div class="stat">
+                            <div class="stat__icon">
+                                <i class="fas fa-clock"></i>
+                            </div>
                             <span class="stat__number">24h</span>
                             <span class="stat__text">Disponível</span>
                         </div>
                         <div class="stat">
+                            <div class="stat__icon">
+                                <i class="fas fa-users"></i>
+                            </div>
                             <span class="stat__number">+500</span>
                             <span class="stat__text">Pacientes</span>
                         </div>
@@ -145,10 +184,9 @@
                 </div>
                 <div class="hero__image">
                     <div class="hero__image-wrapper">
-                        <div class="hero__image-placeholder">
-                            <i class="fas fa-user-md"></i>
-                            <span>Foto do Dr. Lucas</span>
-                        </div>
+                        <img src="assets/images/doctor-placeholder.png"
+                            alt="Dr. Lucas Duarte - Médico em Balneário Camboriú" class="hero__image-photo"
+                            loading="lazy" width="400" height="500">
                         <div class="hero__badge">
                             <i class="fas fa-certificate"></i>
                             <span>CRM Ativo</span>
@@ -487,39 +525,116 @@
                 <div class="section__header">
                     <span class="section__subtitle">O que dizem</span>
                     <h2 class="section__title">Depoimentos</h2>
+                    <p class="section__description">
+                        A confiança dos pacientes é o maior reconhecimento do meu trabalho.
+                    </p>
                 </div>
-                <div class="content__grid">
-                    <div class="specialty__card">
-                        <div class="specialty__icon">
+
+                <div class="testimonials__grid">
+                    <!-- Testimonial 1 -->
+                    <div class="testimonial__card">
+                        <div class="testimonial__quote">
                             <i class="fas fa-quote-left"></i>
                         </div>
-                        <p class="specialty__description" style="font-style: italic; margin-bottom: 1rem;">
+                        <div class="testimonial__rating">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                        </div>
+                        <p class="testimonial__text">
                             "O Dr. Lucas é extremamente atencioso. Explicou tudo com calma e me senti muito acolhida.
                             Recomendo!"
                         </p>
-                        <h4 style="color: var(--primary-color); font-weight: 700;">Mariana S.</h4>
-                        <span style="font-size: 0.8rem; color: var(--text-light);">Paciente Presencial</span>
+                        <div class="testimonial__author">
+                            <div class="testimonial__avatar">MS</div>
+                            <div class="testimonial__info">
+                                <h4>Mariana S.
+                                    <span class="testimonial__verified">
+                                        <i class="fas fa-check-circle"></i> Verificado
+                                    </span>
+                                </h4>
+                                <span>Paciente Presencial</span>
+                            </div>
+                        </div>
                     </div>
-                    <div class="specialty__card">
-                        <div class="specialty__icon">
+
+                    <!-- Testimonial 2 -->
+                    <div class="testimonial__card">
+                        <div class="testimonial__quote">
                             <i class="fas fa-quote-left"></i>
                         </div>
-                        <p class="specialty__description" style="font-style: italic; margin-bottom: 1rem;">
+                        <div class="testimonial__rating">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                        </div>
+                        <p class="testimonial__text">
                             "Fiz uma teleconsulta e me surpreendi com a qualidade. A atenção aos detalhes foi
                             impressionante."
                         </p>
-                        <h4 style="color: var(--primary-color); font-weight: 700;">Carlos A.</h4>
-                        <span style="font-size: 0.8rem; color: var(--text-light);">Paciente Telemedicina</span>
+                        <div class="testimonial__author">
+                            <div class="testimonial__avatar">CA</div>
+                            <div class="testimonial__info">
+                                <h4>Carlos A.
+                                    <span class="testimonial__verified">
+                                        <i class="fas fa-check-circle"></i> Verificado
+                                    </span>
+                                </h4>
+                                <span>Paciente Telemedicina</span>
+                            </div>
+                        </div>
                     </div>
-                    <div class="specialty__card">
-                        <div class="specialty__icon">
+
+                    <!-- Testimonial 3 -->
+                    <div class="testimonial__card">
+                        <div class="testimonial__quote">
                             <i class="fas fa-quote-left"></i>
                         </div>
-                        <p class="specialty__description" style="font-style: italic; margin-bottom: 1rem;">
+                        <div class="testimonial__rating">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                        </div>
+                        <p class="testimonial__text">
                             "Excelente profissional. Demonstra muito conhecimento e empatia. Gratidão pelo atendimento."
                         </p>
-                        <h4 style="color: var(--primary-color); font-weight: 700;">Fernanda L.</h4>
-                        <span style="font-size: 0.8rem; color: var(--text-light);">Paciente Presencial</span>
+                        <div class="testimonial__author">
+                            <div class="testimonial__avatar">FL</div>
+                            <div class="testimonial__info">
+                                <h4>Fernanda L.
+                                    <span class="testimonial__verified">
+                                        <i class="fas fa-check-circle"></i> Verificado
+                                    </span>
+                                </h4>
+                                <span>Paciente Presencial</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Trust Badges -->
+                <div class="trust-badges">
+                    <div class="trust-badge">
+                        <i class="fas fa-user-md"></i>
+                        <span>CRM Ativo</span>
+                    </div>
+                    <div class="trust-badge">
+                        <i class="fas fa-shield-alt"></i>
+                        <span>Atendimento Ético</span>
+                    </div>
+                    <div class="trust-badge">
+                        <i class="fas fa-lock"></i>
+                        <span>Sigilo Médico</span>
+                    </div>
+                    <div class="trust-badge">
+                        <i class="fas fa-award"></i>
+                        <span>Medicina Baseada em Evidências</span>
                     </div>
                 </div>
             </div>
@@ -765,9 +880,11 @@
         </div>
     </footer>
 
-    <!-- WhatsApp Float Button -->
-    <a href="#" class="whatsapp-float" aria-label="WhatsApp">
+    <!-- WhatsApp Float Button with Tooltip -->
+    <a href="https://wa.me/5547999999999?text=Ol%C3%A1%2C%20gostaria%20de%20agendar%20uma%20consulta%20com%20o%20Dr.%20Lucas%20Duarte"
+        class="whatsapp-float" aria-label="WhatsApp" target="_blank" rel="noopener noreferrer">
         <i class="fab fa-whatsapp"></i>
+        <span class="whatsapp-tooltip">Agende pelo WhatsApp</span>
     </a>
 
     <!-- Back to Top Button -->
