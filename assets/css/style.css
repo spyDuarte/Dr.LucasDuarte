@@ -855,8 +855,8 @@ select {
 
 .about__experience {
     position: absolute;
-    bottom: -20px;
-    right: -20px;
+    bottom: 20px;
+    right: 20px;
     background: var(--primary-color);
     color: var(--white);
     padding: var(--spacing-lg) var(--spacing-xl);
