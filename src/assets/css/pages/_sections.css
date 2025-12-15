@@ -63,16 +63,21 @@
   box-shadow: var(--shadow-lg);
 }
 
+.experience__text {
+  display: block;
+  font-size: var(--font-size-xs);
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  opacity: 0.85;
+  margin-bottom: var(--spacing-xs);
+}
+
 .experience__number {
   display: block;
   font-family: var(--font-family-display);
   font-size: var(--font-size-3xl);
   font-weight: var(--font-weight-bold);
-}
-
-.experience__text {
-  font-size: var(--font-size-sm);
-  opacity: 0.9;
+  line-height: 1;
 }
 
 .about__title {
