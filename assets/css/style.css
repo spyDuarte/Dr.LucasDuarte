@@ -555,15 +555,16 @@ select {
 /* Enhanced Stats Section - Social Proof */
 /* Based on: Cialdini (2006) - Social Proof Principle */
 .hero__stats {
-    display: flex;
+    display: inline-flex;
     gap: 0;
-    background: rgba(255, 255, 255, 0.8);
+    background: rgba(255, 255, 255, 0.9);
     backdrop-filter: blur(10px);
     -webkit-backdrop-filter: blur(10px);
-    padding: var(--spacing-lg) var(--spacing-xl);
+    padding: var(--spacing-md) var(--spacing-lg);
     border-radius: var(--radius-xl);
     box-shadow: var(--shadow-md);
     border: 1px solid rgba(15, 76, 117, 0.08);
+    margin-top: var(--spacing-md);
 }
 
 .stat {
@@ -887,14 +888,15 @@ select {
 
 .about__experience {
     position: absolute;
-    bottom: -20px;
-    right: -20px;
-    background: var(--primary-color);
+    bottom: 20px;
+    right: 20px;
+    background: linear-gradient(135deg, var(--primary-color) 0%, var(--primary-dark) 100%);
     color: var(--white);
-    padding: var(--spacing-lg) var(--spacing-xl);
+    padding: var(--spacing-md) var(--spacing-lg);
     border-radius: var(--radius-lg);
     text-align: center;
     box-shadow: var(--shadow-lg);
+    z-index: 10;
 }
 
 .experience__number {
