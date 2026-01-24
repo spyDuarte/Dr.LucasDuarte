@@ -219,7 +219,7 @@ const FormHandler = (function() {
         }
         contactForm.reset();
       }
-    } catch (error) {
+    } catch (_error) {
       // Erro
       if (typeof Notification !== 'undefined' && Notification.show) {
         Notification.show('Erro ao enviar mensagem. Tente novamente.', 'error');
